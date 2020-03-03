@@ -12,7 +12,6 @@ output:
     #]
     self_contained: false
     theme: sky
-    css: "for-revealjs.css"
 ---
 
 ```{r setup, include=FALSE}
