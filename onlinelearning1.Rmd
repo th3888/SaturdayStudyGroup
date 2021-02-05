@@ -1,17 +1,28 @@
 ---
 title: "オンライン機械学習 勉強会"
+subtitle: "chapter 3 基礎の前半"
 date: "`r format(Sys.time(),'%Y/%m/%d')`"
 output:
   revealjs::revealjs_presentation:
     reveal_option:
       slideNumber: true
-      center: true
     #pandoc_args: [
     #  '--from', 'markdown+autolink_bare_uris+tex_math_single_backslash-implicit_figures'
     #]
     self_contained: True
+    center: True
     theme: sky
 ---
+<style type="text/css">
+  .reveal h1,
+  .reveal h2,
+  .reveal h3,
+  .reveal h4,
+  .reveal h5,
+  .reveal h6 {
+    text-transform: none;
+  }
+</style>
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -19,14 +30,8 @@ library(revealjs)
 library(ggplot2)
 library(dplyr)
 ```
-
-
-#やったこと
-
-```{r}
-ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width)) +
-  geom_point()
-```
+# 3.1 二値分類
+- 入力としてベクトル${\bf x}\in R^m$を
 
 # ほが
 
@@ -34,12 +39,11 @@ ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width)) +
 
 ほげほげほげ。
 
-
-
 ## ふたつめの図
 
 ```{r}
 ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width)) +
   geom_point()
 ```
+
 © 2020 GitHub, Inc.
