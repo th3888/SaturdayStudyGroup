@@ -13,6 +13,8 @@ output:
     center: True
     theme: sky
 ---
+# 3.1 二値分類
+
 <style type="text/css">
   .reveal h1,
   .reveal h2,
@@ -23,17 +25,22 @@ output:
     text-transform: none;
   }
 </style>
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(revealjs)
 library(ggplot2)
 library(dplyr)
 ```
-# 3.1 二値分類
+## 
 - 入力としてベクトル${\bf x}\in R^m$を受け取り、実数値を返す関数$f({\bf x})$を考える。
 
-- 識別境界として$f({\bf x})=0$をとり、$f({x})>0$の時は1、それ以外の時は-1を返す分類器による分類問題を二値分類という。
+- 識別境界として$f({\bf x})=0$をとり、$f({\bf x})>0$の時は$1$、それ以外の時は$-1$を返す分類器による分類問題を二値分類という。
+
+\begin{equation}
+y=sign(f({\bf x}))
+\end{equation}  
+
+- 例: スパムメールの分類
 
 # 3.2 線形分類器
 
