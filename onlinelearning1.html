@@ -515,11 +515,12 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <section>
     <h1 class="title">オンライン機械学習 勉強会</h1>
   <h1 class="subtitle">chapter 3 基礎の前半</h1>
-    <h3 class="date">2021/02/07</h3>
+    <h3 class="date">2021/02/08</h3>
 </section>
 
-<section class="slide level2">
-
+<section>
+<section id="二値分類" class="title-slide slide level1">
+<h1>3.1 二値分類</h1>
 <style type="text/css">
   .reveal h1,
   .reveal h2,
@@ -531,14 +532,19 @@ document.getElementsByTagName('head')[0].appendChild(style);
   }
 </style>
 </section>
-<section id="二値分類" class="title-slide slide level1">
-<h1>3.1 二値分類</h1>
+<section id="section" class="slide level2">
+<h2></h2>
 <ul>
 <li><p>入力としてベクトル<span class="math inline">\({\bf x}\in R^m\)</span>を受け取り、実数値を返す関数<span class="math inline">\(f({\bf x})\)</span>を考える。</p></li>
-<li><p>識別境界として<span class="math inline">\(f({\bf x})=0\)</span>をとり、<span class="math inline">\(f({x})&gt;0\)</span>の時は1、それ以外の時は-1を返す分類器による分類問題を二値分類という。</p></li>
+<li><p>識別境界として<span class="math inline">\(f({\bf x})=0\)</span>をとり、<span class="math inline">\(f({\bf x})&gt;0\)</span>の時は<span class="math inline">\(1\)</span>、それ以外の時は<span class="math inline">\(-1\)</span>を返す分類器による分類問題を二値分類という。</p></li>
 </ul>
-</section>
-
+<p><span class="math display">\[\begin{equation}
+y=sign(f({\bf x}))
+\end{equation}\]</span></p>
+<ul>
+<li>例: スパムメールの分類</li>
+</ul>
+</section></section>
 <section>
 <section id="線形分類器" class="title-slide slide level1">
 <h1>3.2 線形分類器</h1>
