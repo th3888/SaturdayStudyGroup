@@ -13,8 +13,10 @@ output:
     center: True
     theme: sky
 ---
+
 # 3.1 二値分類
 
+```{=html}
 <style type="text/css">
   .reveal h1,
   .reveal h2,
@@ -25,28 +27,39 @@ output:
     text-transform: none;
   }
 </style>
+```
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(revealjs)
 library(ggplot2)
 library(dplyr)
 ```
+
 ## 
-- 入力としてベクトル${\bf x}\in R^m$を受け取り、実数値を返す関数$f({\bf x})$を考える。
 
-- 識別境界として$f({\bf x})=0$をとり、$f({\bf x})>0$の時は$1$、それ以外の時は$-1$を返す分類器による分類問題を二値分類という。
+-   入力としてベクトル${\bf x}\in R^m$を受け取り、実数値を返す関数$f({\bf x})$を考える。
 
+-   識別境界として$f({\bf x})=0$をとり、$f({\bf x})>0$の時は$1$、それ以外の時は$-1$を返す分類器による分類問題を二値分類という。
+
+```{=tex}
 \begin{equation}
 y=sign(f({\bf x}))
-\end{equation}  
-
-- 例: スパムメールの分類
+\end{equation}
+```
+-   例：スパムメールの分類、ある商品を購入するかどうかの予測
 
 # 3.2 線形分類器
 
-## ほがほが
+## 
 
-ほげほげほげ。
+- 識別関数$f({\bf x})$を重みベクトル$\bf w$と入力$\bf x$の内積とバイアス項$b$の和で表現する時、この分類器は線形分類器と呼ばれる。
+
+\begin{equation}
+f({\bf x})={\bf w}^T{\bf x}+b
+\end{equation}
+
+##
+
 
 ## ふたつめの図
 
