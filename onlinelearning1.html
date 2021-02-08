@@ -538,11 +538,11 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <li><p>入力としてベクトル<span class="math inline">\({\bf x}\in R^m\)</span>を受け取り、実数値を返す関数<span class="math inline">\(f({\bf x})\)</span>を考える。</p></li>
 <li><p>識別境界として<span class="math inline">\(f({\bf x})=0\)</span>をとり、<span class="math inline">\(f({\bf x})&gt;0\)</span>の時は<span class="math inline">\(1\)</span>、それ以外の時は<span class="math inline">\(-1\)</span>を返す分類器による分類問題を二値分類という。</p></li>
 </ul>
-<p><span class="math display">\[\begin{equation}
+<span class="math display">\[\begin{equation}
 y=sign(f({\bf x}))
-\end{equation}\]</span></p>
+\end{equation}\]</span>
 <ul>
-<li>例: スパムメールの分類</li>
+<li>例：スパムメールの分類、ある商品を購入するかどうかの予測</li>
 </ul>
 </section></section>
 <section>
@@ -550,9 +550,17 @@ y=sign(f({\bf x}))
 <h1>3.2 線形分類器</h1>
 
 </section>
-<section id="ほがほが" class="slide level2">
-<h2>ほがほが</h2>
-<p>ほげほげほげ。</p>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<ul>
+<li>識別関数<span class="math inline">\(f({\bf x})\)</span>を重みベクトル<span class="math inline">\(\bf w\)</span>と入力<span class="math inline">\(\bf x\)</span>の内積とバイアス項<span class="math inline">\(b\)</span>の和で表現する時、この分類器は線形分類器と呼ばれる。</li>
+</ul>
+<p><span class="math display">\[\begin{equation}
+f({\bf x})={\bf w}^T{\bf x}+b
+\end{equation}\]</span></p>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
 </section>
 <section id="ふたつめの図" class="slide level2">
 <h2>ふたつめの図</h2>
