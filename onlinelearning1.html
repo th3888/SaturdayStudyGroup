@@ -515,7 +515,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <section>
     <h1 class="title">オンライン機械学習 勉強会</h1>
   <h1 class="subtitle">chapter 3 基礎の前半</h1>
-    <h3 class="date">2021/02/08</h3>
+    <h3 class="date">2021/02/09</h3>
 </section>
 
 <section>
@@ -535,8 +535,8 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <section id="section" class="slide level2">
 <h2></h2>
 <ul>
-<li><p>入力としてベクトル<span class="math inline">\({\bf x}\in R^m\)</span>を受け取り、実数値を返す関数<span class="math inline">\(f({\bf x})\)</span>を考える。</p></li>
-<li><p>識別境界として<span class="math inline">\(f({\bf x})=0\)</span>をとり、<span class="math inline">\(f({\bf x})&gt;0\)</span>の時は<span class="math inline">\(1\)</span>、それ以外の時は<span class="math inline">\(-1\)</span>を返す分類器による分類問題を二値分類という。</p></li>
+<li><p>入力としてベクトル<span class="math inline">\({\bf x}\in R^m\)</span>を受け取り、実数値を返す関数<span class="math inline">\(f({\bf x})\)</span>を考える</p></li>
+<li><p>識別境界として<span class="math inline">\(f({\bf x})=0\)</span>をとり、<span class="math inline">\(f({\bf x})&gt;0\)</span>の時は<span class="math inline">\(1\)</span>、それ以外の時は<span class="math inline">\(-1\)</span>を返す分類器による分類問題を二値分類という</p></li>
 </ul>
 <span class="math display">\[\begin{equation}
 y=sign(f({\bf x}))
@@ -553,14 +553,56 @@ y=sign(f({\bf x}))
 <section id="section-1" class="slide level2">
 <h2></h2>
 <ul>
-<li>識別関数<span class="math inline">\(f({\bf x})\)</span>を重みベクトル<span class="math inline">\(\bf w\)</span>と入力<span class="math inline">\(\bf x\)</span>の内積とバイアス項<span class="math inline">\(b\)</span>の和で表現する時、この分類器は線形分類器と呼ばれる。</li>
+<li>識別関数<span class="math inline">\(f({\bf x})\)</span>を重みベクトル<span class="math inline">\(\bf w\)</span>と入力<span class="math inline">\(\bf x\)</span>の内積とバイアス項<span class="math inline">\(b\)</span>の和で表現する時、この分類器は線形分類器と呼ばれる</li>
 </ul>
 <p><span class="math display">\[\begin{equation}
 f({\bf x})={\bf w}^T{\bf x}+b
 \end{equation}\]</span></p>
+<ul>
+<li>線形分類器を使って二値分類問題を解くということはパラメータ<span class="math inline">\(\bf w\)</span>と<span class="math inline">\(b\)</span>をうまく決めるということ</li>
+</ul>
 </section>
 <section id="section-2" class="slide level2">
 <h2></h2>
+<ul>
+<li>バイアス項<span class="math inline">\(b\)</span>については、正規化したり入力<span class="math inline">\(\bf x\)</span>を拡張することで省略したりして計算を行う</li>
+</ul>
+<p>入力<span class="math inline">\(\bf x\)</span>を拡張した場合 <span class="math display">\[\begin{equation}
+f({\bf x})={\bf w}^T{\bf x}=0
+\end{equation}\]</span></p>
+<p>重みベクトルのノルム<span class="math inline">\(\|w\|\)</span>で正規化して変形した場合 <span class="math display">\[\begin{equation}
+f({\bf x})={\bf n}^T{\bf x}-\Delta_{w}={\bf n}^T({\bf x}-{\bf P})=0
+\end{equation}\]</span> ここで、<span class="math inline">\({\bf n}={\bf w}/\|\bf w\|\)</span>、<span class="math inline">\(\Delta_{w}=-b/\|\bf w\|\)</span>、<span class="math inline">\(\bf P\)</span>は識別関数上の任意の点</p>
+<ul>
+<li>識別関数を直交するベクトルとして表現して分離超平面に</li>
+</ul>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>バイアス項は特殊なので別途最適化した方がよい性能が得られる場合がある</p></li>
+<li><p>sgd(stochastic gradient descent)というソルバーではバイアス項の更新のみ学習率を<span class="math inline">\(1/100\)</span>にしたヒューリスティックな手法を採用</p></li>
+<li><p>理論的に保証されたアルゴリズムはバイアス付きPassive-Aggressiveアルゴリズム(Tateishi et al., 2013)などがある</p></li>
+</ul>
+</section></section>
+<section>
+<section id="パーセプトロン" class="title-slide slide level1">
+<h1>3.3 パーセプトロン</h1>
+
+</section>
+<section id="section-4" class="slide level2">
+<h2></h2>
+<p>単純パーセプトロンの学習アルゴリズム</p>
+<ol type="1">
+<li><strong>Require:</strong> <span class="math inline">\({\bf w}^{(1)}=0\)</span></li>
+<li><strong>for</strong> <span class="math inline">\(t=1,2,...\)</span> <strong>do</strong></li>
+<li>    <strong>if</strong> <span class="math inline">\(y^{(t)}{\bf w}^{(t)T}{\bf x}^{(t)}\le0\)</span> <strong>then</strong></li>
+<li>        <span class="math inline">\({\bf w}^{(t+1)}={\bf w}^{(t)}+y^{(t)}{\bf x}^{(t)}\)</span></li>
+<li>    <strong>else</strong></li>
+<li>        <span class="math inline">\({\bf w}^{(t+1)}={\bf w}^{(t)}\)</span></li>
+<li>    <strong>end if</strong></li>
+<li><strong>end for</strong></li>
+</ol>
 </section>
 <section id="ふたつめの図" class="slide level2">
 <h2>ふたつめの図</h2>
