@@ -515,7 +515,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <section>
     <h1 class="title">オンライン機械学習 勉強会</h1>
   <h1 class="subtitle">chapter 3 基礎の前半</h1>
-    <h3 class="date">2021/02/09</h3>
+    <h3 class="date">2021/02/10</h3>
 </section>
 
 <section>
@@ -603,6 +603,19 @@ f({\bf x})={\bf n}^T{\bf x}-\Delta_{w}={\bf n}^T({\bf x}-{\bf P})=0
 <li>    <strong>end if</strong></li>
 <li><strong>end for</strong></li>
 </ol>
+<p><span class="math inline">\({\bf x}^{(t)}\)</span>、<span class="math inline">\(y^{(t)}\)</span>は<span class="math inline">\(t\)</span>回目に受け取る学習データの組、<span class="math inline">\({\bf w}^{(t+1)}\)</span>は<span class="math inline">\(t\)</span>回データを受け取った後の重みベクトル</p>
+</section>
+<section id="section-5" class="slide level2">
+<h2></h2>
+<ul>
+<li><span class="math inline">\(y^{(t)}{\bf w}^{(t)}{\bf x}^{(t)}\le0\)</span>の時、すなわち<span class="math inline">\(t\)</span>期のデータが与えられた時に誤分類している場合、次のように内積<span class="math inline">\({\bf w}^T{\bf x}\)</span>が変化するように<span class="math inline">\({\bf w}\)</span>を更新する</li>
+</ul>
+<p><span class="math display">\[\begin{equation}
+{\bf w}^{(t+1)T}{\bf x}^{(t)}-{\bf w}^{(t)T}{\bf x}^{(t)}=y^{(t)}{\bf x}^{(t)T}{\bf x}^{(t)}
+\end{equation}\]</span></p>
+<ul>
+<li><span class="math inline">\(y^{(t)}=1\)</span>の時は内積は大きくなり、<span class="math inline">\(y^{(t)}=-1\)</span>の時は小さくなるので、パラメータ更新により正解に近づいていく</li>
+</ul>
 </section>
 <section id="ふたつめの図" class="slide level2">
 <h2>ふたつめの図</h2>
