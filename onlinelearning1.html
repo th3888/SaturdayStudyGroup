@@ -510,7 +510,7 @@ f({\bf x})={\bf w}^T{\bf x}=0
 f({\bf x})={\bf n}^T{\bf x}-\Delta_{w}={\bf n}^T({\bf x}-{\bf P})=0
 \end{equation}\]</span> ここで、<span class="math inline">\({\bf n}={\bf w}/\|\bf w\|\)</span>、<span class="math inline">\(\Delta_{w}=-b/\|\bf w\|\)</span>、<span class="math inline">\(\bf P\)</span>は識別関数上の任意の点</p>
 <ul>
-<li>識別関数を直交するベクトルとして表現して分離超平面に</li>
+<li>識別関数を直交するベクトルとして表現する形に持っていく</li>
 </ul>
 </section>
 <section id="section-3" class="slide level2">
@@ -607,13 +607,13 @@ L({\bf w})=\sum_{t=1}^N l({\bf x}^{(t)},y^{(t)},{\bf w})+r({\bf w})
 </section>
 <section id="section-9" class="slide level2">
 <h2></h2>
-<p>n番目にデータ<span class="math inline">\(({\bf w}^{(n)},y^{(n)})\)</span>を受け取る分類器の目的関数が以下の形で表せるものとする</p>
+<p>n番目にデータ<span class="math inline">\(({\bf x}^{(n)},y^{(n)})\)</span>を受け取る分類器の目的関数が以下の形で表せるものとする</p>
 <p><span class="math display">\[\begin{equation}
-L({\bf w})=\sum_{n} l({\bf w}^{(n)},y^{(n)},{\bf w})
+L({\bf w})=\sum_{n} l({\bf x}^{(n)},y^{(n)},{\bf w})
 \end{equation}\]</span></p>
-<p><span class="math inline">\(l({\bf w}^{(n)},y^{(n)},{\bf w})\)</span>について、分類に成功したら0、間違えたら分離超平面までの距離をとる関数を考える</p>
+<p><span class="math inline">\(l({\bf x}^{(n)},y^{(n)},{\bf w})\)</span>について、分類に成功したら0、間違えたら分離超平面までの距離をとる関数を考える</p>
 <p><span class="math display">\[\begin{equation}
-l({\bf w}^{(n)},y^{(n)},{\bf w})=\max(-y^{(n)}{\bf w}^T{\bf x}^{(n)},0)
+l({\bf x}^{(n)},y^{(n)},{\bf w})=\max(-y^{(n)}{\bf w}^T{\bf x}^{(n)},0)
 \end{equation}\]</span></p>
 <ul>
 <li>この場合、<span class="math inline">\(L({\bf w})\)</span>は分類間違いがなければ<span class="math inline">\(0\)</span>だが、間違いが多くなるほど大きな値をとることになる</li>
@@ -641,7 +641,7 @@ l({\bf w}^{(n)},y^{(n)},{\bf w})=\max(-y^{(n)}{\bf w}^T{\bf x}^{(n)},0)
 <ol type="1">
 <li><strong>Require</strong>: <span class="math inline">\({\bf w}^{(1)}=0\)</span></li>
 <li><strong>for</strong> <span class="math inline">\(t=1,2,...\)</span> <strong>do</strong></li>
-<li>    <span class="math inline">\({\bf w}^{(t+1)}={\bf w}^{(t)}-\eta^{(t)}\nabla l({\bf w}^{(t)},y^{(t)},{\bf w}^{(t)})\)</span></li>
+<li>    <span class="math inline">\({\bf w}^{(t+1)}={\bf w}^{(t)}-\eta^{(t)}\nabla l({\bf x}^{(t)},y^{(t)},{\bf w}^{(t)})\)</span></li>
 <li><strong>end for</strong></li>
 </ol>
 </section>
@@ -669,10 +669,10 @@ l({\bf w}^{(n)},y^{(n)},{\bf w})=\max(-y^{(n)}{\bf w}^T{\bf x}^{(n)},0)
 <section id="section-14" class="slide level2">
 <h2></h2>
 <ul>
-<li>パーセプトロン基準における<span class="math inline">\(l({\bf w}^{(t)},y^{(t)},{\bf w}^{(t)})\)</span>は次式</li>
+<li>パーセプトロン基準における<span class="math inline">\(l({\bf x}^{(t)},y^{(t)},{\bf w}^{(t)})\)</span>は次式</li>
 </ul>
 <p><span class="math display">\[\begin{equation}
-l({\bf w}^{(t)},y^{(t)},{\bf w}^{(t)})=\max(-y^{(t)}{\bf w}^T{\bf x}^{(t)},0)
+l({\bf x}^{(t)},y^{(t)},{\bf w}^{(t)})=\max(-y^{(t)}{\bf w}^T{\bf x}^{(t)},0)
 \end{equation}\]</span></p>
 <ul>
 <li>この関数の勾配を計算してパーセプトロンの学習を行う</li>
