@@ -451,7 +451,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <section>
     <h1 class="title">オンライン機械学習 勉強会</h1>
   <h1 class="subtitle">chapter 3 基礎の前半</h1>
-    <h3 class="date">2021/02/13</h3>
+    <h3 class="date">2021/02/21</h3>
 </section>
 
 <section>
@@ -783,10 +783,10 @@ y^{(n)}({\bf w}^T{\bf x}^{(n)}+b)\ge 0
 <h2></h2>
 <ul>
 <li><p>線形分離可能ではないデータに対応するための、ソフトマージン拡張を考える</p></li>
-<li><p>ソフトマージンSVMでは制約の代わりに分類失敗の場合はペナルティ<span class="math inline">\(\xi^{(t)}\)</span>を与えることとし、ペナルティを目的関数に組み込む</p></li>
+<li><p>ソフトマージンSVMでは、本来の制約条件を緩和する一方で、マージンを越えた分としてペナルティ<span class="math inline">\(\xi^{(t)}\)</span>を与えることとしてペナルティを目的関数に組み込む</p></li>
 </ul>
 <p><span class="math display">\[\begin{equation}
-L({\bf w})=\min_{{\bf w}}(\sum_{t=1,2,...} \xi^{(t)})+C\|{\bf w}\|^2
+L({\bf w})=(\sum_{t=1,2,...} \xi^{(t)}+C\|{\bf w}\|^2)
 \end{equation}\]</span></p>
 </section>
 <section id="section-23" class="slide level2">
@@ -801,7 +801,7 @@ L({\bf w})=\min_{{\bf w}}(\sum_{t=1,2,...} \xi^{(t)})+C\|{\bf w}\|^2
 <li>これを使って目的関数を書き換えると以下のようになる</li>
 </ul>
 <p><span class="math display">\[\begin{equation}
-L({\bf w})=\min_{{\bf w}}(\sum_{t=1,2,...} \max(1-y^{(t)}{\bf w}^T{\bf x}^{(t)},0)+C\|{\bf w}\|^2
+L({\bf w})=(\sum_{t=1,2,...} \max(1-y^{(t)}{\bf w}^T{\bf x}^{(t)},0)+C\|{\bf w}\|^2)
 \end{equation}\]</span></p>
 <ul>
 <li>SVMでは損失項はヒンジ損失で、正則化はL2正則化を採用する</li>
