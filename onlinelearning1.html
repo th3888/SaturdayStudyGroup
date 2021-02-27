@@ -451,7 +451,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <section>
     <h1 class="title">オンライン機械学習 勉強会</h1>
   <h1 class="subtitle">chapter 3 基礎の前半</h1>
-    <h3 class="date">2021/02/21</h3>
+    <h3 class="date">2021/02/27</h3>
 </section>
 
 <section>
@@ -786,22 +786,31 @@ y^{(n)}({\bf w}^T{\bf x}^{(n)}+b)\ge 0
 <li><p>ソフトマージンSVMでは、本来の制約条件を緩和する一方で、マージンを越えた分としてペナルティ<span class="math inline">\(\xi^{(t)}\)</span>を与えることとしてペナルティを目的関数に組み込む</p></li>
 </ul>
 <p><span class="math display">\[\begin{equation}
-L({\bf w})=(\sum_{t=1,2,...} \xi^{(t)}+C\|{\bf w}\|^2)
+L({\bf w})=\sum_{t=1,2,...} \xi^{(t)}+C\|{\bf w}\|^2
 \end{equation}\]</span></p>
 </section>
 <section id="section-23" class="slide level2">
 <h2></h2>
 <ul>
-<li>全ての<span class="math inline">\(\xi^{(t)}\)</span>は以下の制約を満たさなければならない</li>
+<li>マージンを越えた分である全ての<span class="math inline">\(\xi^{(t)}\ge 0\)</span>は以下の制約を満たさなければならない</li>
 </ul>
+<p><span class="math display">\[\begin{equation}
+y^{(t)}{\bf w}^T{\bf x}^{(t)}\ge 1-\xi^{(t)}
+\end{equation}\]</span></p>
 <p><span class="math display">\[\begin{equation}
 \xi^{(t)}=\max(1-y^{(t)}{\bf w}^T{\bf x}^{(t)},0)
 \end{equation}\]</span></p>
 <ul>
+<li>このとき、<span class="math inline">\(\xi^{(t)}=0\)</span>はマージン内で正しく分類できる場合、<span class="math inline">\(0&lt;\xi^{(t)}\le1\)</span>はマージン境界を越えるが分類には成功している場合、<span class="math inline">\(\xi^{(t)}&gt;1\)</span>は誤分類を意味する</li>
+</ul>
+</section>
+<section id="section-24" class="slide level2">
+<h2></h2>
+<ul>
 <li>これを使って目的関数を書き換えると以下のようになる</li>
 </ul>
 <p><span class="math display">\[\begin{equation}
-L({\bf w})=(\sum_{t=1,2,...} \max(1-y^{(t)}{\bf w}^T{\bf x}^{(t)},0)+C\|{\bf w}\|^2)
+L({\bf w})=\sum_{t=1,2,...} \max(1-y^{(t)}{\bf w}^T{\bf x}^{(t)},0)+C\|{\bf w}\|^2
 \end{equation}\]</span></p>
 <ul>
 <li>SVMでは損失項はヒンジ損失で、正則化はL2正則化を採用する</li>
@@ -810,17 +819,17 @@ L({\bf w})=(\sum_{t=1,2,...} \max(1-y^{(t)}{\bf w}^T{\bf x}^{(t)},0)+C\|{\bf w}\
 <section id="svmの目的関数の解釈" class="slide level2">
 <h2>3.6.4 SVMの目的関数の解釈</h2>
 </section>
-<section id="section-24" class="slide level2">
+<section id="section-25" class="slide level2">
 <h2></h2>
 <ul>
-<li><p>損失項は <span class="math inline">\(y^{(t)}{\bf w}^T{\bf x}^{(t)}\ge 1\)</span>の時0で、それ以外の時は0より大きな値になるので、パーセプトロンより厳格</p></li>
+<li><p>損失項は <span class="math inline">\(y^{(t)}{\bf w}^T{\bf x}^{(t)}\ge 1\)</span>の時0で、それ以外の時は0より大きな値になるので、パーセプトロンより厳格→？</p></li>
 <li><p>また、正則化項を持つことで損失項のみのパーセプトロンと比べて過学習に強くなり、未知データの予測性能が向上</p></li>
 </ul>
 </section>
 <section id="確率的勾配降下法によるsvmの学習" class="slide level2">
 <h2>3.6.5 確率的勾配降下法によるSVMの学習</h2>
 </section>
-<section id="section-25" class="slide level2">
+<section id="section-26" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>SGDによるSVMの学習もパーセプトロンの場合と同様にできる</p></li>
@@ -838,7 +847,7 @@ L({\bf w})=(\sum_{t=1,2,...} \max(1-y^{(t)}{\bf w}^T{\bf x}^{(t)},0)+C\|{\bf w}\
 <li>勾配が計算できれば、確率的勾配降下法に当てはめて学習を行う</li>
 </ul>
 </section>
-<section id="section-26" class="slide level2">
+<section id="section-27" class="slide level2">
 <h2></h2>
 <p>確率的勾配降下法によるSVMの学習</p>
 <ol type="1">
