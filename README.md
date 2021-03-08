@@ -6,4 +6,4 @@
 [スライド](https://th3888.github.io/SaturdayStudyGroup/onlinelearning1.html#/)
 
 ### 2021/3/14
-[スライド](https://th3888.github.io/SaturdayStudyGroup/onlinelearning1.html#/)
+[スライド](https://th3888.github.io/SaturdayStudyGroup/onlinelearning2l.html#/)
