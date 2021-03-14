@@ -451,7 +451,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <section>
     <h1 class="title">オンライン機械学習 勉強会</h1>
   <h1 class="subtitle">chapter 4 発展</h1>
-    <h3 class="date">2021/03/08</h3>
+    <h3 class="date">2021/03/14</h3>
 </section>
 
 <section>
@@ -470,9 +470,17 @@ document.getElementsByTagName('head')[0].appendChild(style);
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
-<ul>
-<li></li>
-</ul>
+<p>オンライン学習の枠組み</p>
+<ol type="1">
+<li><strong>Require:</strong> <span class="math inline">\({\bf w}^{(1)}=0\)</span></li>
+<li><strong>for</strong> <span class="math inline">\(t=1,2,...\)</span> <strong>do</strong></li>
+<li>    <strong>if</strong> <span class="math inline">\(y^{(t)}{\bf w}^{(t)T}{\bf x}^{(t)}&lt;E\)</span> <strong>then</strong></li>
+<li>        <span class="math inline">\({\bf w}^{(t+1)}={\bf w}^{(t)}+y^{(t)}\alpha{\bf A}{\bf x}^{(t)}\)</span></li>
+<li>    <strong>else</strong></li>
+<li>        <span class="math inline">\({\bf w}^{(t+1)}={\bf w}^{(t)}\)</span></li>
+<li>    <strong>end if</strong></li>
+<li><strong>end for</strong></li>
+</ol>
 </section></section>
     </div>
   </div>
