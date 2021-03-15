@@ -451,7 +451,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <section>
     <h1 class="title">オンライン機械学習 勉強会</h1>
   <h1 class="subtitle">chapter 4 発展</h1>
-    <h3 class="date">2021/03/14</h3>
+    <h3 class="date">2021/03/15</h3>
 </section>
 
 <section>
@@ -481,6 +481,58 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <li>    <strong>end if</strong></li>
 <li><strong>end for</strong></li>
 </ol>
+<p>ここで、<span class="math inline">\(\alpha, E\)</span>は<span class="math inline">\(\alpha &gt;0, E \ge0\)</span>を満たす実数、<span class="math inline">\({\bf A}\in R^{m×m}\)</span>は半正定値行列</p>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>入力の次元<span class="math inline">\(m\)</span>が大きい場合、半正定値行列を格納するために<span class="math inline">\(m^{2}/2\)</span>個のパラメータが必要で、これとベクトルの積の処理は<span class="math inline">\(O(m^3)\)</span>となり、計算負荷が大きい</p></li>
+<li><p>この問題を解決するために<span class="math inline">\(\bf A\)</span>として対角行列を使うケースがほとんど</p></li>
+<li><p>この時の計算量は<span class="math inline">\(O(m)\)</span>なので手軽になる</p></li>
+</ul>
+</section>
+<section id="パーセプトロン" class="slide level2">
+<h2>4.1.1 パーセプトロン</h2>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<ul>
+<li>パーセプトロンの更新則をオンライン学習の枠組みで考えると、<span class="math inline">\(E=0, \alpha=1, {\bf A}={\bf I}\)</span>に対応する</li>
+</ul>
+<p><span class="math display">\[\begin{equation}
+{\bf w}^{(t+1)}={\bf w}^{(t)}+y{\bf x}
+\end{equation}\]</span></p>
+<ul>
+<li>パーセプトロンはどのように間違っても全ての特徴に対して同じ更新幅を用いる</li>
+</ul>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>5.2節で、パーセプトロンが線形分離可能な入力に対して有限回の更新で分類可能な重みベクトルを見つけられ、線形分離不可能な入力に対しても多くの重みベクトルを見つけられることの証明を扱う</p></li>
+<li><p>改良版としては、分類時に全てのステップの重みベクトルの平均を用いる平均化パーセプトロンがある</p></li>
+<li><p>平均化パーセプトロンの効率的な計算に関しては6.2.1項で扱う</p></li>
+</ul>
+</section>
+<section id="passive-aggressivepa" class="slide level2">
+<h2>4.1.2 Passive Aggressive(PA)</h2>
+</section>
+<section id="section-4" class="slide level2">
+<h2></h2>
+<ul>
+<li>PAでは、SVMで用いたヒンジ損失を使い以下の最適化問題を解く</li>
+</ul>
+<p><span class="math display">\[\begin{equation}
+\newcommand{\argmin}{\mathop{\rm arg~min}\limits}
+{\bf w}^{(t+1)}=\argmin_{\bf w} \frac{1}{2}\|{\bf w}-{\bf w}^{(t)}\|^{2}
+\end{equation}\]</span> <span class="math display">\[\begin{equation}
+s.t\ \ \ \  l_{hinge}({\bf x}^{(t)}, y^{(t)}, {\bf w})=0
+\end{equation}\]</span></p>
+<ul>
+<li>これをラグランジュ未定乗数法で解く <span class="math display">\[\begin{equation}
+L({\bf w}, \tau)=\frac{1}{2}\|{\bf w}-{\bf w}^{(t)}\|^{2}+\tau (1-y^{(t)}{\bf w}^{(T)}{\bf x}^{(t)})
+\end{equation}\]</span></li>
+</ul>
 </section></section>
     </div>
   </div>
