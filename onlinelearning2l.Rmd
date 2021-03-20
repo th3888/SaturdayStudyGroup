@@ -96,3 +96,10 @@ s.t\ \ \ \  l_{hinge}({\bf x}^{(t)}, y^{(t)}, {\bf w})=0
 \begin{equation}
 L({\bf w}, \tau)=\frac{1}{2}\|{\bf w}-{\bf w}^{(t)}\|^{2}+\tau (1-y^{(t)}{\bf w}^{(T)}{\bf x}^{(t)})
 \end{equation}
+
+\begin{equation}
+{\bf w}={\bf w}^{(t)}+\tau y^{(t)}x^{(t)}
+\end{equation}
+
+## 
+- 得られた${\bf w}$をラグランジュ関数に代入する
