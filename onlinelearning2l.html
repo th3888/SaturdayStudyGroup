@@ -451,7 +451,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <section>
     <h1 class="title">オンライン機械学習 勉強会</h1>
   <h1 class="subtitle">chapter 4 発展</h1>
-    <h3 class="date">2021/03/20</h3>
+    <h3 class="date">2021/03/21</h3>
 </section>
 
 <section>
@@ -520,28 +520,160 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <section id="section-4" class="slide level2">
 <h2></h2>
 <ul>
-<li>PAでは、SVMで用いたヒンジ損失を使い以下の最適化問題を解く</li>
+<li><p>原論文はJMLR Crammer et al.(2006)</p></li>
+<li><p>PAでは、SVMで用いたヒンジ損失を使い以下の最適化問題を解く</p></li>
 </ul>
 <p><span class="math display">\[\begin{equation}
 \newcommand{\argmin}{\mathop{\rm arg~min}\limits}
 {\bf w}^{(t+1)}=\argmin_{\bf w} \frac{1}{2}\|{\bf w}-{\bf w}^{(t)}\|^{2}
 \end{equation}\]</span> <span class="math display">\[\begin{equation}
-s.t\ \ \ \  l_{hinge}({\bf x}^{(t)}, y^{(t)}, {\bf w})=0
+s.t\ \ \ \  l_{hinge}({\bf x}^{(t)}, y^{(t)}, {\bf w})=\max(0, 1-y^{(t)}{\bf w}^{T}{\bf x}^{(t)})=0
 \end{equation}\]</span></p>
 <ul>
-<li>これをラグランジュ未定乗数法で解く <span class="math display">\[\begin{equation}
-L({\bf w}, \tau)=\frac{1}{2}\|{\bf w}-{\bf w}^{(t)}\|^{2}+\tau (1-y^{(t)}{\bf w}^{(T)}{\bf x}^{(t)})
+<li><p>ヒンジ損失が<span class="math inline">\(0\)</span>、すなわち<span class="math inline">\(y^{(t)}{\bf w}^{T}{\bf x}^{(t)}&gt;1\)</span>のとき、重みベクトルは更新されない(passive)</p></li>
+<li><p><span class="math inline">\(y^{(t)}{\bf w}^{T}{\bf x}^{(t)}&lt;1\)</span>のとき、ヒンジ損失が<span class="math inline">\(0\)</span>になるように重みベクトルを更新する(aggressive)</p></li>
+</ul>
+</section>
+<section id="section-5" class="slide level2">
+<h2></h2>
+<ul>
+<li>aggressiveの場合、上の最適化問題をラグランジュ未定乗数法で解く <span class="math display">\[\begin{equation}
+L({\bf w}, \tau)=\frac{1}{2}\|{\bf w}-{\bf w}^{(t)}\|^{2}+\tau (1-y^{(t)}{\bf w}^{T}{\bf x}^{(t)})
 \end{equation}\]</span></li>
 </ul>
 <p><span class="math display">\[\begin{equation}
 {\bf w}={\bf w}^{(t)}+\tau y^{(t)}x^{(t)}
 \end{equation}\]</span></p>
+<ul>
+<li>得られた<span class="math inline">\({\bf w}\)</span>をラグランジュ関数に代入する <span class="math display">\[\begin{equation}
+L(\tau)=-\frac{1}{2}\tau^{2}\|{\bf x}^{(t)}\|^2+\tau(1-y^{(t)}{\bf w}^{(t)T}{\bf x}^{(t)})
+\end{equation}\]</span></li>
+</ul>
 </section>
-<section id="section-5" class="slide level2">
+<section id="section-6" class="slide level2">
 <h2></h2>
 <ul>
-<li>得られた<span class="math inline">\({\bf w}\)</span>をラグランジュ関数に代入する</li>
+<li>これを<span class="math inline">\(\tau\)</span>について偏微分し、最適化問題を解く <span class="math display">\[\begin{equation}
+\frac{\partial L}{\partial \tau}=-\tau \|{\bf x}^{(t)}\|^{2}+(1-y^{(t)}{\bf w}^{(t)T}{\bf x}^{(t)})=0
+\end{equation}\]</span></li>
 </ul>
+<p><span class="math display">\[\begin{equation}
+\tau=\frac{1-y^{(t)}{\bf w}^{(t)T}{\bf x}^{(t)}}{\|{\bf x}^{t}\|^{2}}
+\end{equation}\]</span></p>
+<ul>
+<li>つまり、aggressiveの時の更新則は以下のようになる <span class="math display">\[\begin{equation}
+{\bf w}^{(t+1)}={\bf w}^{(t)}+\frac{1-y^{(t)}{\bf w}^{(t)T}{\bf x}^{(t)}}{\|{\bf x}\|^{2}}y^{(t)}x^{(t)}
+\end{equation}\]</span></li>
+</ul>
+</section>
+<section id="section-7" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>PAアルゴリズムの更新則では、ノイズのあるデータに大きく影響を受けたパラメータ更新をしてしまう</p></li>
+<li><p>この問題に対処するためにヒンジ損失についての制約を緩和することを考える</p></li>
+<li><p>SVMにおけるソフトマージン拡張と同様のアイデアを用いる</p></li>
+</ul>
+</section>
+<section id="section-8" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>PA-Ⅰアルゴリズム <span class="math display">\[\begin{equation}
+\newcommand{\argmin}{\mathop{\rm arg~min}\limits}
+{\bf w}^{(t+1)}=\argmin_{\bf w} \frac{1}{2}\|{\bf w}-{\bf w}^{(t)}\|^{2}+C\xi
+\end{equation}\]</span> <span class="math display">\[\begin{equation}
+s.t\ \ \ \  l_{hinge}({\bf x}^{(t)}, y^{(t)}, {\bf w})\le\xi, \xi\ge0
+\end{equation}\]</span></p></li>
+<li><p>PA-Ⅱアルゴリズム</p></li>
+</ul>
+<p><span class="math display">\[\begin{equation}
+\newcommand{\argmin}{\mathop{\rm arg~min}\limits}
+{\bf w}^{(t+1)}=\argmin_{\bf w} \frac{1}{2}\|{\bf w}-{\bf w}^{(t)}\|^{2}+C{\xi}^2
+\end{equation}\]</span> <span class="math display">\[\begin{equation}
+s.t\ \ \ \  l_{hinge}({\bf x}^{(t)}, y^{(t)}, {\bf w})\le\xi
+\end{equation}\]</span></p>
+<p>ここで、<span class="math inline">\(C\)</span>はスラック変数<span class="math inline">\(\xi\)</span>の影響をコントロールする正のパラメータ</p>
+</section>
+<section id="section-9" class="slide level2">
+<h2></h2>
+<ul>
+<li>通常のPAアルゴリズムと同様にこれらもラグランジュ法を使って解くことができるので、まずはPA-Ⅰから見ていく</li>
+</ul>
+<p><span class="math display">\[\begin{equation}
+L({\bf w}, \xi, \tau, \lambda)=\frac{1}{2}\|{\bf w}-{\bf w}^{(t)}\|^{2}+\tau (1-y^{(t)}{\bf w}^{T}{\bf x}^{(t)})+\xi(C-\tau-\lambda)
+\end{equation}\]</span></p>
+<ul>
+<li><span class="math inline">\(w\)</span>についてのfirst order conditionを調べると、通常のPAアルゴリズムと同様の更新則を得る</li>
+</ul>
+<p><span class="math display">\[\begin{equation}
+{\bf w}^{(t+1)}={\bf w}^{(t)}+\tau y^{(t)}x^{(t)}
+\end{equation}\]</span></p>
+</section>
+<section id="section-10" class="slide level2">
+<h2></h2>
+<ul>
+<li><p><span class="math inline">\(\xi(C-\tau-\lambda)\)</span>については、非ゼロの場合いくらでも<span class="math inline">\(-\infty\)</span>に近づけられる</p></li>
+<li><p>双対問題を考えた時最大化をする必要があるので、<span class="math inline">\(\xi(C-\tau-\lambda)=0\)</span>についてのみ考える</p></li>
+<li><p>ここで、<span class="math inline">\(\lambda\ge0\)</span>なので、<span class="math inline">\(\tau\le C\)</span>が条件となる</p></li>
+</ul>
+</section>
+<section id="section-11" class="slide level2">
+<h2></h2>
+<ul>
+<li>もし、<span class="math inline">\(1-y^{(t)}{\bf w}^{T}{\bf x}^{(t)}/\|{\bf x}\|^{2}\le C\)</span>ならば</li>
+</ul>
+<p><span class="math display">\[\begin{equation}
+\tau=\frac{1-y^{(t)}{\bf w}^{(t)T}{\bf x}^{(t)}}{\|{\bf x}\|^{2}}
+\end{equation}\]</span></p>
+<ul>
+<li><p>次に<span class="math inline">\(1-y^{(t)}{\bf w}^{T}{\bf x}^{(t)}/\|{\bf x}\|^{2}&gt; C\)</span>の場合を考える</p></li>
+<li><p>この条件を書き直すと</p></li>
+</ul>
+<p><span class="math display">\[\begin{equation}
+C\|{\bf x}\|^{2} &lt; 1-y^{(t)}{\bf w}^{T}{\bf x}^{(t)}
+\end{equation}\]</span></p>
+</section>
+<section id="section-12" class="slide level2">
+<h2></h2>
+<ul>
+<li>また、制約条件より</li>
+</ul>
+<p><span class="math display">\[\begin{equation}
+1-y^{(t)}{\bf w}^{T}{\bf x}^{(t)}\le \xi 
+\end{equation}\]</span></p>
+<ul>
+<li>更新則より</li>
+</ul>
+<p><span class="math display">\[\begin{equation}
+1-y^{(t)}{\bf w}^{T}{\bf x}^{(t)}-\tau \|{\bf x}\|^{2}\le \xi 
+\end{equation}\]</span></p>
+<ul>
+<li>これらにより以下が導ける <span class="math display">\[\begin{equation}
+C\|{\bf x}\|^{2}-\tau \|{\bf x}\|^{2}&lt; \xi 
+\end{equation}\]</span></li>
+</ul>
+</section>
+<section id="section-13" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>これと<span class="math inline">\(\tau\le C\)</span>より<span class="math inline">\(\xi&gt;0\)</span>で、KKT条件より<span class="math inline">\(\xi \lambda=0\)</span>なので<span class="math inline">\(\lambda=0\)</span></p></li>
+<li><p>よって、このときは<span class="math inline">\(\tau = C\)</span>となり、更新則は以下のようになる</p></li>
+</ul>
+<p><span class="math display">\[\begin{equation}
+\tau = \min(C, \frac{1-y^{(t)}{\bf w}^{(t)T}{\bf x}^{(t)}}{\|{\bf x}\|^{2}})
+\end{equation}\]</span></p>
+<ul>
+<li>つまり、更新幅がパラメータ<span class="math inline">\(C\)</span>を超える場合は<span class="math inline">\(C\)</span>でクリップされる</li>
+</ul>
+</section>
+<section id="section-14" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>PA-Ⅱに関しても同様にラグランジュ法で解く</p></li>
+<li><p>PA-Ⅱのラグランジュ関数に関して<span class="math inline">\({\bf w}, \xi\)</span>についてのFOCを調べて、得られた<span class="math inline">\({\bf w}, \xi\)</span>をラグランジュ関数に代入し、<span class="math inline">\(\tau\)</span>についてのFOCをとると、以下が得られる</p></li>
+</ul>
+<p><span class="math display">\[\begin{equation}
+\tau = \frac{1-y^{(t)}{\bf w}^{(t)T}{\bf x}^{(t)}}{\|{\bf x}\|^{2}+\frac{1}{2C}}
+\end{equation}\]</span></p>
 </section></section>
     </div>
   </div>
