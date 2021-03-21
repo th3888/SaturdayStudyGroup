@@ -82,6 +82,8 @@ library(dplyr)
 
 ##
 
+- 原論文はJMLR Crammer et al.(2006)
+
 - PAでは、SVMで用いたヒンジ損失を使い以下の最適化問題を解く
 
 \begin{equation}
@@ -89,17 +91,151 @@ library(dplyr)
 {\bf w}^{(t+1)}=\argmin_{\bf w} \frac{1}{2}\|{\bf w}-{\bf w}^{(t)}\|^{2}
 \end{equation}
 \begin{equation}
-s.t\ \ \ \  l_{hinge}({\bf x}^{(t)}, y^{(t)}, {\bf w})=0
+s.t\ \ \ \  l_{hinge}({\bf x}^{(t)}, y^{(t)}, {\bf w})=\max(0, 1-y^{(t)}{\bf w}^{T}{\bf x}^{(t)})=0
 \end{equation}
 
-- これをラグランジュ未定乗数法で解く
+- ヒンジ損失が$0$、すなわち$y^{(t)}{\bf w}^{T}{\bf x}^{(t)}>1$のとき、重みベクトルは更新されない(passive)
+
+- $y^{(t)}{\bf w}^{T}{\bf x}^{(t)}<1$のとき、ヒンジ損失が$0$になるように重みベクトルを更新する(aggressive)
+
+##
+
+- aggressiveの場合、上の最適化問題をラグランジュ未定乗数法で解く
 \begin{equation}
-L({\bf w}, \tau)=\frac{1}{2}\|{\bf w}-{\bf w}^{(t)}\|^{2}+\tau (1-y^{(t)}{\bf w}^{(T)}{\bf x}^{(t)})
+L({\bf w}, \tau)=\frac{1}{2}\|{\bf w}-{\bf w}^{(t)}\|^{2}+\tau (1-y^{(t)}{\bf w}^{T}{\bf x}^{(t)})
 \end{equation}
 
 \begin{equation}
 {\bf w}={\bf w}^{(t)}+\tau y^{(t)}x^{(t)}
 \end{equation}
 
-## 
 - 得られた${\bf w}$をラグランジュ関数に代入する
+\begin{equation}
+L(\tau)=-\frac{1}{2}\tau^{2}\|{\bf x}^{(t)}\|^2+\tau(1-y^{(t)}{\bf w}^{(t)T}{\bf x}^{(t)})
+\end{equation}
+
+##
+
+- これを$\tau$について偏微分し、最適化問題を解く
+\begin{equation}
+\frac{\partial L}{\partial \tau}=-\tau \|{\bf x}^{(t)}\|^{2}+(1-y^{(t)}{\bf w}^{(t)T}{\bf x}^{(t)})=0
+\end{equation}
+
+\begin{equation}
+\tau=\frac{1-y^{(t)}{\bf w}^{(t)T}{\bf x}^{(t)}}{\|{\bf x}^{t}\|^{2}}
+\end{equation}
+
+- つまり、aggressiveの時の更新則は以下のようになる
+\begin{equation}
+{\bf w}^{(t+1)}={\bf w}^{(t)}+\frac{1-y^{(t)}{\bf w}^{(t)T}{\bf x}^{(t)}}{\|{\bf x}\|^{2}}y^{(t)}x^{(t)}
+\end{equation}
+
+##
+
+- PAアルゴリズムの更新則では、ノイズのあるデータに大きく影響を受けたパラメータ更新をしてしまう
+
+- この問題に対処するためにヒンジ損失についての制約を緩和することを考える
+
+- SVMにおけるソフトマージン拡張と同様のアイデアを用いる
+
+## 
+
+- PA-Ⅰアルゴリズム
+\begin{equation}
+\newcommand{\argmin}{\mathop{\rm arg~min}\limits}
+{\bf w}^{(t+1)}=\argmin_{\bf w} \frac{1}{2}\|{\bf w}-{\bf w}^{(t)}\|^{2}+C\xi
+\end{equation}
+\begin{equation}
+s.t\ \ \ \  l_{hinge}({\bf x}^{(t)}, y^{(t)}, {\bf w})\le\xi, \xi\ge0
+\end{equation}
+
+- PA-Ⅱアルゴリズム
+
+\begin{equation}
+\newcommand{\argmin}{\mathop{\rm arg~min}\limits}
+{\bf w}^{(t+1)}=\argmin_{\bf w} \frac{1}{2}\|{\bf w}-{\bf w}^{(t)}\|^{2}+C{\xi}^2
+\end{equation}
+\begin{equation}
+s.t\ \ \ \  l_{hinge}({\bf x}^{(t)}, y^{(t)}, {\bf w})\le\xi
+\end{equation}
+
+
+ここで、$C$はスラック変数$\xi$の影響をコントロールする正のパラメータ
+
+
+## 
+- 通常のPAアルゴリズムと同様にこれらもラグランジュ法を使って解くことができるので、まずはPA-Ⅰから見ていく
+
+\begin{equation}
+L({\bf w}, \xi, \tau, \lambda)=\frac{1}{2}\|{\bf w}-{\bf w}^{(t)}\|^{2}+\tau (1-y^{(t)}{\bf w}^{T}{\bf x}^{(t)})+\xi(C-\tau-\lambda)
+\end{equation}
+
+- $w$についてのfirst order conditionを調べると、通常のPAアルゴリズムと同様の更新則を得る
+
+\begin{equation}
+{\bf w}^{(t+1)}={\bf w}^{(t)}+\tau y^{(t)}x^{(t)}
+\end{equation}
+
+##
+
+- $\xi(C-\tau-\lambda)$については、非ゼロの場合いくらでも$-\infty$に近づけられる
+
+- 双対問題を考えた時最大化をする必要があるので、$\xi(C-\tau-\lambda)=0$についてのみ考える
+
+- ここで、$\lambda\ge0$なので、$\tau\le C$が条件となる
+
+##
+
+- もし、$1-y^{(t)}{\bf w}^{T}{\bf x}^{(t)}/\|{\bf x}\|^{2}\le C$ならば
+
+\begin{equation}
+\tau=\frac{1-y^{(t)}{\bf w}^{(t)T}{\bf x}^{(t)}}{\|{\bf x}\|^{2}}
+\end{equation}
+
+- 次に$1-y^{(t)}{\bf w}^{T}{\bf x}^{(t)}/\|{\bf x}\|^{2}> C$の場合を考える
+
+- この条件を書き直すと
+
+\begin{equation}
+C\|{\bf x}\|^{2} < 1-y^{(t)}{\bf w}^{T}{\bf x}^{(t)}
+\end{equation}
+
+## 
+
+- また、制約条件より
+
+\begin{equation}
+1-y^{(t)}{\bf w}^{T}{\bf x}^{(t)}\le \xi 
+\end{equation}
+
+- 更新則より
+
+\begin{equation}
+1-y^{(t)}{\bf w}^{T}{\bf x}^{(t)}-\tau \|{\bf x}\|^{2}\le \xi 
+\end{equation}
+
+- これらにより以下が導ける
+\begin{equation}
+C\|{\bf x}\|^{2}-\tau \|{\bf x}\|^{2}< \xi 
+\end{equation}
+
+## 
+- これと$\tau\le C$より$\xi>0$で、KKT条件より$\xi \lambda=0$なので$\lambda=0$
+
+- よって、このときは$\tau = C$となり、更新則は以下のようになる
+
+\begin{equation}
+\tau = \min(C, \frac{1-y^{(t)}{\bf w}^{(t)T}{\bf x}^{(t)}}{\|{\bf x}\|^{2}})
+\end{equation}
+
+- つまり、更新幅がパラメータ$C$を超える場合は$C$でクリップされる
+
+## 
+
+- PA-Ⅱに関しても同様にラグランジュ法で解く
+
+- PA-Ⅱのラグランジュ関数に関して${\bf w}, \xi$についてのFOCを調べて、得られた${\bf w}, \xi$をラグランジュ関数に代入し、$\tau$についてのFOCをとると、以下が得られる
+
+\begin{equation}
+\tau = \frac{1-y^{(t)}{\bf w}^{(t)T}{\bf x}^{(t)}}{\|{\bf x}\|^{2}+\frac{1}{2C}}
+\end{equation}
