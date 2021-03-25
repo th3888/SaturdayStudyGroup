@@ -239,3 +239,11 @@ C\|{\bf x}\|^{2}-\tau \|{\bf x}\|^{2}< \xi
 \begin{equation}
 \tau = \frac{1-y^{(t)}{\bf w}^{(t)T}{\bf x}^{(t)}}{\|{\bf x}\|^{2}+\frac{1}{2C}}
 \end{equation}
+
+# Confidence Weighted Learning (CW)
+
+## 
+
+- Crammer et al. ()
+
+- 各重みが${\bf w}~$
