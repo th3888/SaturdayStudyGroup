@@ -244,6 +244,176 @@ C\|{\bf x}\|^{2}-\tau \|{\bf x}\|^{2}< \xi
 
 ## 
 
-- Crammer et al. ()
+- ICMLの Crammer et al. (2008) で提案
 
-- 各重みが${\bf w}~$
+- 各重みについて、${\bf w}\sim \mathcal N({\bf \mu}, \Sigma)$であると考える
+
+- 共分散行列$\Sigma\in {\mathbb R}^{m×m}$は対角成分を${\bf \sigma\in {\mathbb R}^{m}}$の対角行列として与えているので、$i.i.d$
+
+- $\mu_{j}$は$j$期における重みについての知識(テキストでは最も信頼できる重みと表現)、$\sigma_{j}$は自信を表していると考えられる
+
+##
+
+- この重みベクトルについての多変量正規分布のもとで、マージンを正規分布に従う確率変数として与える
+
+\begin{equation}
+M\sim \mathcal N(y^{(i)}({\bf \mu}{\bf x}^{(i)}), {\bf x}^{(i)T}\Sigma {\bf x}^{(i)})
+\end{equation}
+
+- マージンの平均は重みベクトルを平均で与えた時のマージンで、分散は${\bf x}^{(i)}$の$\Sigma$への射影の大きさに比例する
+
+- マージンが非負であることと予測が正しいことは同値なので、正しい予測の確率は次のようになる
+
+\begin{equation}
+Pr[M\ge 0]=Pr[y^{(i)}({\bf w}{\bf x}^{(i)})\ge 0]
+\end{equation}
+
+## 
+
+- CWでは、正解の確率がハイパーパラメータ$\eta$以下にならないという制約のもとKLダイバージェンスにより確率分布を更新する
+
+\begin{equation}
+\min D_{KL}(\mathcal N({\bf \mu},\Sigma)\|\mathcal N({\bf \mu}^{(i)},\Sigma^{(i)}))
+\end{equation}
+
+\begin{equation}
+s.t.\ \ \ \ Pr[y^{(i)}({\bf w}{\bf x}^{(i)})\ge 0]\ge \eta
+\end{equation}
+
+- マージンは正規分布に従うことから、誤分類確率は以下のように標準正規分布に従う確率変数を用いて表現できる
+\begin{equation}
+Pr[M\le 0]=Pr[\frac{M-\mu_{M}}{\sigma_{M}}\le \frac{-\mu_{M}}{\sigma_{M}}]
+\end{equation}
+
+## 
+
+- この確率を累積分布関数を用いて表現すると以下のようになる
+\begin{equation}
+Pr[\frac{M-\mu_{M}}{\sigma_{M}}\le \frac{-\mu_{M}}{\sigma_{M}}]=\Phi(\frac{-\mu_{M}}{\sigma_{M}})
+\end{equation}
+
+- 累積分布関数を用いて制約条件を書き換えると以下のようになる
+\begin{equation}
+\frac{-\mu_{M}}{\sigma_{M}}\le \Phi^{-1}(1-\eta)=-\Phi^{-1}(\eta)
+\end{equation}
+
+- ここで$\phi=\Phi^{-1}(\eta)$とし、$\mu_{M},\sigma_{M}$の定義を代入すると以下を得る
+
+\begin{equation}
+y^{(i)}({\bf \mu}{\bf x}^{(i)})\ge \phi \sqrt{{\bf x}^{(i)T}\Sigma {\bf x}^{(i)}}
+\end{equation}
+
+## 
+
+- この制約条件は凸ではないので、根号を除外して線形化する
+
+\begin{equation}
+y^{(i)}({\bf \mu}{\bf x}^{(i)})\ge \phi ({\bf x}^{(i)T}\Sigma {\bf x}^{(i)})
+\end{equation}
+
+- この制約条件のもと、KLダイバージェンスの最適化問題に関わらない定数項$m$を除外すると、CW最適化問題を解くラグランジュ関数は以下のようになる
+
+\begin{equation}
+\mathcal L = \frac{1}{2}\log (\frac{\mathrm{det}\Sigma^{(i)}}{\mathrm{det}\Sigma}) + \frac{1}{2}\mathrm{Tr}(\Sigma^{(i)-1}\Sigma)+\\
+\frac{1}{2}(\mu^{(i)}-\mu)^{T}\Sigma^{(i)-1}(\mu^{(i)}-\mu) + \alpha(-y^{(i)}({\bf \mu}{\bf x}^{(i)})+\phi ({\bf x}^{(i)T}\Sigma {\bf x}^{(i)}))
+\end{equation}
+
+## 
+
+- これを解くと、$\mu$の更新式が以下のように得られる
+
+\begin{equation}
+\frac{\partial \mathcal L}{\partial \mu}=\Sigma^{(i)-1}(\mu^{(i)}-\mu)-\alpha y^{(i)}{\bf x}^{(i)}=0
+\end{equation}
+
+\begin{equation}
+\mu^{(i+1)}=\mu^{(i)}+\alpha y^{(i)}\Sigma^{(i)}{\bf x}^{(i)}
+\end{equation}
+
+- $\Sigma$の更新式はまず$\Sigma^{(i+1)-1}$を求める
+
+\begin{equation}
+\frac{\partial \mathcal L}{\partial \Sigma}=-\frac{1}{2}\Sigma^{-1}+\frac{1}{2}\Sigma^{(i)-1}+\phi \alpha {bf x}^{(i)}{bf x}^{(i)T}=0
+\end{equation}
+
+\begin{equation}
+\Sigma^{(i+1)-1}=\Sigma^{(i)-1}+2\alpha \phi {\bf x}^{(i)}{\bf x}^{(i)T}
+\end{equation}
+
+## 
+
+- 行列の反転公式を用いることで$\Sigma^{(i+1)}$を得る
+
+\begin{equation}
+\Sigma^{(i+1)}=(\Sigma^{(i)-1}+2\alpha \phi {\bf x}^{(i)}{\bf x}^{(i)T})^{-1}\\
+=\Sigma^{(i)}-\Sigma^{(i)}{\bf x}^{(i)}(\frac{1}{2\alpha \phi}+{\bf x}^{(i)T}\Sigma {\bf x}^{(i)})^{-1}{bf x}^{(i)T}\Sigma^{(i)}\\
+=\Sigma^{(i)}-\Sigma^{(i)}{\bf x}^{(i)}\frac{2\alpha \phi}{1+2\alpha \phi{\bf x}^{(i)T}\Sigma {\bf x}^{(i)}}{\bf x}^{(i)T}\Sigma^{(i)}
+\end{equation}
+
+##
+
+- KKT条件より、$\alpha=0$であるか、確率分布更新ののち制約条件$y^{(i)}({\bf \mu}{\bf x}^{(i)})\ge \phi ({\bf x}^{(i)T}\Sigma {\bf x}^{(i)})$の等号が成り立つことになる
+
+- 得られた更新式を制約条件$y^{(i)}({\bf \mu}{\bf x}^{(i)})\ge \phi ({\bf x}^{(i)T}\Sigma {\bf x}^{(i)})$の等号が成り立っている場合に代入し、$M_{i}=y^{(i)}({\bf \mu}{\bf x}^{(i)}),V_{i}={\bf x}^{(i)T}\Sigma {\bf x}^{(i)}$とおくと以下が得られる
+
+\begin{equation}
+M_{i}+\alpha V_{i}=\phi V_{i}-\phi V_{i}^{2}\frac{2\alpha \phi}{1+2\alpha \phi V_{i}}
+\end{equation}
+
+## 
+
+- これは$\alpha$についての2次方程式で、正の解$\gamma_{i}$として以下が得られる
+
+\begin{equation}
+\gamma_{i}=\frac{-(1+2\phi M_{i})+\sqrt{(1+2\phi M_{i})^{2}-8\phi (M_{i}-\phi V_{i})}}{4\phi V_{i}}
+\end{equation}
+
+- もし$1+2\phi M_{i}\le0$なら$\gamma_{i}>0$で、$1+2\phi M_{i}\ge 0$であれば以下の同値関係がわかる
+
+\begin{equation}
+\gamma_{i}>0\\
+\Leftrightarrow \sqrt{(1+2\phi M_{i})^{2}-8\phi (M_{i}-\phi V_{i})} > 1+2\phi M_{i}\\
+\Leftrightarrow M_{i} < \phi V_{i}
+\end{equation}
+
+## 
+
+- 以上の議論より、ラグランジュ乗数$\alpha$の最適値は$\alpha_{i}=\max (\gamma, 0)$で与えられることがわかる
+
+- したがって、CWのアルゴリズムは分散の程度(自信の程度)によって更新幅が変わるアルゴリズムになっている
+
+# CWの拡張
+
+## Adaptive Regularization of Weight Vectors (AROW)
+
+##
+
+- ノイズデータに対して頑健にするCWの拡張
+
+- 現在の学習データを正しく分類すること、今までの分布に近い分布を探すこと、更新ごとに各特徴の自信をあげることを考えて最適化
+
+\begin{equation}
+\min D_{KL}(\mathcal N({\bf \mu},\Sigma)\|\mathcal N({\bf \mu}_{i},\Sigma_{i}))+\frac{1}{2r}l_{hinge}(\mu, {\bf x}_{i}, y_{i})^{2}+\frac{1}{2r}V_{i}
+\end{equation}
+
+## Soft Confidence-Weighted Learning (SCW)
+
+## 
+
+- PAの時の拡張と同様の制約を緩める発想
+
+- 以下の損失関数を考える
+
+\begin{equation}
+l^{\phi}(V_{i},M_{i})=\max (0, \phi\sqrt{V_{i}}-M_{i})
+\end{equation}
+
+- PAの時と同様にCW-Ⅰ、CW-Ⅱの目的関数は以下のようになる
+\begin{equation}
+\min D_{KL}(\mathcal N({\bf \mu},\Sigma)\|\mathcal N({\bf \mu}_{i},\Sigma_{i}))+Cl^{\phi}(V_{i}, M_{i})
+\end{equation}
+
+\begin{equation}
+\min D_{KL}(\mathcal N({\bf \mu},\Sigma)\|\mathcal N({\bf \mu}_{i},\Sigma_{i}))+Cl^{\phi}(V_{i}, M_{i})^{2}
+
+\end{equation}
