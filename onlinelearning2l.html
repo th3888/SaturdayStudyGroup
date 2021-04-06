@@ -451,7 +451,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <section>
     <h1 class="title">オンライン機械学習 勉強会</h1>
   <h1 class="subtitle">chapter 4 発展</h1>
-    <h3 class="date">2021/03/27</h3>
+    <h3 class="date">2021/04/05</h3>
 </section>
 
 <section>
@@ -858,6 +858,109 @@ l^{\phi}(V_{i},M_{i})=\max (0, \phi\sqrt{V_{i}}-M_{i})
 \min D_{KL}(\mathcal N({\bf \mu},\Sigma)\|\mathcal N({\bf \mu}_{i},\Sigma_{i}))+Cl^{\phi}(V_{i}, M_{i})^{2}
 
 \end{equation}\]</span></p>
+</section></section>
+<section>
+<section id="オンライン分散並列学習" class="title-slide slide level1">
+<h1>オンライン分散並列学習</h1>
+
+</section>
+<section id="確率的勾配降下法の並列化" class="slide level2">
+<h2>確率的勾配降下法の並列化</h2>
+</section>
+<section id="section-27" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>確率的勾配降下法の更新則は<span class="math inline">\(t\)</span>期のデータを用いて勾配を計算する <span class="math display">\[\begin{equation}
+{\bf w}^{(t+1)}={\bf w}^{(t)}-\eta^{(t)}\nabla l^{(t)}({\bf w}^{(t)})
+\end{equation}\]</span></p></li>
+<li><p>勾配降下法と比べると反復1回あたりの計算コストが小さい一方、元々の目的関数とのずれによって収束性能が悪くなる</p></li>
+<li><p>計算機の並列処理を活用してこの問題を解決するアルゴリズムがミニバッチ確率的勾配降下法</p></li>
+</ul>
+<p><span class="math display">\[\begin{equation}
+{\bf w}^{(t+1)}={\bf w}^{(t)}-\eta^{(t)}\nabla \frac{1}{B}\Sigma_{l\in X^{(t)}} l^{(t)}({\bf w}^{(t)})
+\end{equation}\]</span></p>
+</section>
+<section id="section-28" class="slide level2">
+<h2></h2>
+<ul>
+<li><p><span class="math inline">\(X^{(t)}\)</span>は、<span class="math inline">\(B\)</span>個の学習データをひとまとめとした損失関数の集合(これをミニバッチという)</p></li>
+<li><p>ミニバッチのサイズで正規化することで、サイズを変えても学習率の調整に煩わされない</p></li>
+<li><p><span class="math inline">\(P=B\)</span>個のプロセスを用いてミニバッチ内の各サンプルに対する勾配を並列計算することで、オンライン学習の素早い計算性能を保ちつつ勾配のずれを小さくすることができる</p></li>
+</ul>
+</section>
+<section id="section-29" class="slide level2">
+<h2></h2>
+<p>並列化ミニバッチ確率的勾配降下法のアルゴリズム</p>
+<ol type="1">
+<li><strong>Require:</strong> <span class="math inline">\({\bf w}^{(1)}=0\)</span></li>
+<li><strong>for</strong> <span class="math inline">\(t=1,2,...,T\)</span> <strong>do</strong></li>
+<li>    ミニバッチ<span class="math inline">\(X^{(t)}=\{l^{(t)}_{1},...,l^{(t)}_{B}\}\)</span>を読み込む</li>
+<li>    <strong>for</strong> <span class="math inline">\(i=1,...,B\)</span> <strong>do in parallel</strong></li>
+<li>        <span class="math inline">\({\bf g}^{(t)}_{i}=\nabla l^{(t)}_{i}({\bf w}^{(t)})\)</span></li>
+<li>    <strong>end for</strong></li>
+<li>     <span class="math inline">\({\bf w}^{(t+1)}={\bf w}^{(t)}-\eta^{(t)}\nabla \frac{1}{B}\Sigma^{B}_{i=1} {\bf g}^{(t)}_{i}\)</span></li>
+<li><strong>end for</strong></li>
+</ol>
+</section>
+<section id="section-30" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>並列化ミニバッチ確率的勾配降下法では、各プロセスが1回勾配計算するごとに全体を同期して更新を行う(Bulk Synchronous Parallel)</p></li>
+<li><p>並列化ミニバッチ確率的勾配降下法の問題点は、並列度が上がっていくと同期にかかるオーバーヘッドが支配的になり、更新速度がスケールしなくなる</p></li>
+<li><p>つまり、大量に並列処理をしたい場合はここの問題点を解決するために同期の回数を減らすことを考えていく</p></li>
+</ul>
+</section>
+<section id="parallel-sgd" class="slide level2">
+<h2>Parallel SGD</h2>
+</section>
+<section id="section-31" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>NeurIPS2010のZinkevichらの論文で提案された手法</p></li>
+<li><p>学習データ全体を<span class="math inline">\(P\)</span>個に均等に分割してそれぞれ1つずつ各プロセスに割り当てる</p></li>
+<li><p>その<span class="math inline">\(P\)</span>個のプロセスそれぞれで与えられた学習データの部分集合に対してSGDを実行</p></li>
+<li><p>最後に、得られた<span class="math inline">\(P\)</span>個のパラメータベクトルの平均をとる</p></li>
+</ul>
+</section>
+<section id="section-32" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>損失関数が凸かつその勾配がリプシッツ連続なら、Parallel SGDは最適解に収束</p></li>
+<li><p>並列度をあげることで、単一プロセスのSGDに比べて収束速度を向上させることができる</p></li>
+<li><p>Its convergence analysis is highly technical. Detailed proof are given in the appendix.</p></li>
+<li><p>appendix攻略できず、この辺は性能解析、リグレット解析のところも絡むのでその時また触れたい</p></li>
+</ul>
+</section>
+<section id="iterative-parameter-mixtureipm" class="slide level2">
+<h2>Iterative Parameter Mixture(IPM)</h2>
+</section>
+<section id="section-33" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>1回のパラメータ更新で全てのプロセスを同期する並列化ミニバッチ確率的勾配降下法と、パラメータ学習後に1回だけ同期するParallel SGDの中間で、途中で何度か同期する</p></li>
+<li><p>同期を途中で挟むことで各プロセスの推定パラメータの分散を抑えてより素早く最適解に近づくことができる</p></li>
+<li><p>一方で、確率的最適化の枠組みにおいて理論的な解析が難しいというネックがある</p></li>
+</ul>
+</section>
+<section id="stale-synchronous-parallelssp" class="slide level2">
+<h2>Stale Synchronous Parallel(SSP)</h2>
+</section>
+<section id="section-34" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>理論解析をしやすくするため、パラメータが大きく離れ過ぎないような制約を加える</p></li>
+<li><p>並列化ミニバッチ確率的勾配降下法の枠組みであるBSPの一般化</p></li>
+<li><p>ここでは、更新時にパラメータに加算されるベクトルを差分ベクトルと呼ぶ</p></li>
+</ul>
+</section>
+<section id="section-35" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>プロセス<span class="math inline">\(p\in\{1,...,P\}\)</span>の<span class="math inline">\(t\)</span>回目の更新における差分ベクトルを<span class="math inline">\({\bf u}^{(t)}_{p}\)</span>とする</p></li>
+<li><p>BSPでは、時刻<span class="math inline">\(T\)</span>におけるプロセス<span class="math inline">\(p\)</span><span class="math inline">\({\bf u}^{(T)}_{p}\)</span>は自分を除く各プロセス<span class="math inline">\(q\)</span>の時刻<span class="math inline">\(t&lt;T\)</span>における差分ベクトル<span class="math inline">\({\bf u}^{(t)}_{q}\)</span>を受け取ってから計算される</p></li>
+<li><p>SSPではこの制約を緩め、他のプロセス<span class="math inline">\(q\)</span>の時刻<span class="math inline">\(t&lt;T-s\)</span>における差分ベクトル<span class="math inline">\({\bf u}^{(t)}_{q}\)</span>を受け取っていれば計算できるものとする</p></li>
+<li><p><span class="math inline">\(s\)</span>は各プロセスがどれくらいの時間までは同期しなくてもよいかを表すstalenessと呼ばれる定数で、<span class="math inline">\(s=0\)</span>のときはBSPと等価</p></li>
+</ul>
 </section></section>
     </div>
   </div>
