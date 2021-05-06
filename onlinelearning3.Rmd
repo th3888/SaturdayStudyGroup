@@ -1,22 +1,31 @@
 ---
-title: "chapter 5"
+title: "chapter 5 性能解析"
 date: "2021/5/3"
 output: 
   beamer_presentation:
     latex_engine: xelatex
     theme: "CambridgeUS"
     colortheme: "rose"
+mainfont: ipaexg.ttf
+header-includes:
+  - \usepackage{amsthm}
+  - \newtheorem{df}{定義}
+  - \newtheorem{thm}{定理}
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## R Markdown
+## パーセプトロンの学習定理
 
 This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+
+\begin{df}
+  Xが大きくなるとYも大きくなりやすくなる。
+\end{df}
 
 ## Slide with Bullets
 
