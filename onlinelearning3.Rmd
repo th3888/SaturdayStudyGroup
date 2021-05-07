@@ -26,9 +26,11 @@ knitr::opts_chunk$set(echo = FALSE)
 ## パーセプトロンの学習定理
 
 \begin{df}
-  すべての学習データ$\{{\bf x}^{(t)}, y^{(t)}\}_{t=1,…,N}$について、
-  $y^{(t)}{\bf u}^{T}{\bf x}^{(t)}\ge \gamma$を満たす長さ$1$のベクトル$\bf   u$が存在するとき、
-  学習データはマージン$\gamma$で線形分離可能であるという。
+すべての学習データ$\{{\bf x}^{(t)}, y^{(t)}\}_{t=1,…,N}$について、$y^{(t)}{\bf u}^{T}{\bf x}^{(t)}\ge \gamma$を満たす長さ$1$のベクトル$\bf u$が存在するとき、学習データはマージン$\gamma$で線形分離可能であるという。
+\end{df}
+
+\begin{df}
+
 \end{df}
 
 ## Slide with Bullets
