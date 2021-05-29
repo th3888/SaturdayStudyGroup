@@ -59,11 +59,12 @@ $\mathrm{sign}({\bf w}^{T}{\bf x}) \neq y$ならば、次の更新則に従い�
 更新回数は高々$(R/\gamma)^{2}$回である。
 \end{thm}
 
-## Slide with R Output
+## パーセプトロンの学習定理
 
-```{r cars, echo = TRUE}
-summary(cars)
-```
+\begin{proof}
+すべての
+\let\qedsymbol\relax
+\end{proof}
 
 ## Slide with Plot
 
