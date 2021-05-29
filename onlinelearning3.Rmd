@@ -48,7 +48,7 @@ $\mathrm{sign}({\bf w}^{T}{\bf x}) \neq y$ならば、次の更新則に従い�
 \end{df}
 
 \begin{df}[学習データの半径]
-学習データ$\{{\bf x}^{(t)}, y^{(t)}\}_{t=1,…,N}$の半径とは、
+学習データ$\{{\bf x}^{(t)}, y^{(t)}\}_{t=1,…,N}$の半径を$R=\max_{t}\|{\bf x}^{(t)}\|$とする。
 \end{df}
 
 ## Slide with Bullets
