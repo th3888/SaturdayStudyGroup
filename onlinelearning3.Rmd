@@ -24,6 +24,15 @@ knitr::opts_chunk$set(echo = FALSE)
 - 入力ベクトル${\bf x} \in \mathbb{R}^{m}$およびパラメータ${\bf w} \in \mathbb{R}^{m}$
 に対するパーセプトロンの出力
 
+\begin{equation}
+\mathrm{sign}({\bf w}^{T}{\bf x})
+\end{equation}
+
+- パラメータの初期値: ${\bf w}^{(0)}={\bf 0}$
+
+- 学習データ${\bf x} \in \mathbb{R}^{m}, y \in \{-1, 1\}$を受け取り、
+$\mathrm{sign}({\bf w}^{T}{\bf x}) \neq y$ならば、次の更新則に従いパラメータを更新する
+
 ## パーセプトロンの学習定理
 
 \begin{df}[学習データのマージン]
