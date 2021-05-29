@@ -51,11 +51,13 @@ $\mathrm{sign}({\bf w}^{T}{\bf x}) \neq y$ならば、次の更新則に従い�
 学習データ$\{{\bf x}^{(t)}, y^{(t)}\}_{t=1,…,N}$の半径を$R=\max_{t}\|{\bf x}^{(t)}\|$とする。
 \end{df}
 
-## Slide with Bullets
+## パーセプトロンの学習定理
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
+\begin{thm}[パーセプトロンの学習定理]
+学習データについて、半径が$R$でありマージン$\gamma$で分離可能
+であるならば、この学習データに対するパーセプトロンの
+更新回数は高々$(R/\gamma)^{2}$回である。
+\end{thm}
 
 ## Slide with R Output
 
