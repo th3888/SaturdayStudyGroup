@@ -21,7 +21,8 @@ knitr::opts_chunk$set(echo = FALSE)
 
 (復習)
 
-- 
+- 入力ベクトル${\bf x} \in \mathbb{R}^{m}$およびパラメータ${\bf w} \in \mathbb{R}^{m}$
+に対するパーセプトロンの出力
 
 ## パーセプトロンの学習定理
 
@@ -31,7 +32,7 @@ knitr::opts_chunk$set(echo = FALSE)
 マージン$\gamma$で線形分離可能であるという。
 \end{df}
 
-\begin{df}
+\begin{df}[学習データの半径]
 
 \end{df}
 
