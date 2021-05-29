@@ -33,6 +33,10 @@ knitr::opts_chunk$set(echo = FALSE)
 - 学習データ${\bf x} \in \mathbb{R}^{m}, y \in \{-1, 1\}$を受け取り、
 $\mathrm{sign}({\bf w}^{T}{\bf x}) \neq y$ならば、次の更新則に従いパラメータを更新する
 
+\begin{equation}
+{\bf w}^{(t+1)}={\bf w}^{(t)}+y{\bf x}
+\end{equation}
+
 ## パーセプトロンの学習定理
 
 \begin{df}[学習データのマージン]
