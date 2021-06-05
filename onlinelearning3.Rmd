@@ -11,6 +11,7 @@ header-includes:
   - \usepackage{amsthm}
   - \newtheorem{df}{定義}
   - \newtheorem{thm}{定理}
+  - \newtheorem{lm}{補題}
 ---
 
 ```{r setup, include=FALSE}
@@ -160,7 +161,8 @@ $(R+D/\gamma)^{2}$回である。
 ## 線形分離可能でない場合のパーセプトロンの学習
 
 \begin{proof}
-
 ここでは$D>0$の場合を考える。
+
+線形分離可能でない問題をより高次元の線形分離可能な
 \let\qedsymbol\relax
 \end{proof}
