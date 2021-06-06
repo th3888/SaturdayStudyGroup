@@ -1,6 +1,6 @@
 ---
 title: "chapter 5 性能解析"
-date: "2021/5/3"
+date: "2021/6/6"
 output: 
   beamer_presentation:
     latex_engine: xelatex
@@ -146,7 +146,7 @@ d^{(t)} = \max \{0, \gamma -y^{(t)}{\bf u}^{T}{\bf x}^{(t)}\} \nonumber
 \begin{df}[学習データのペナルティのノルム]
 ペナルティノルムを次のように定義する。
 \begin{align}
-D= \sqrt{\Sigma_{i=1}^{n}d^{(t)2}}
+D= \sqrt{\Sigma_{i=1}^{n}d^{(t)2}} \nonumber
 \end{align}
 \end{df}
 
@@ -158,11 +158,98 @@ D= \sqrt{\Sigma_{i=1}^{n}d^{(t)2}}
 $(R+D/\gamma)^{2}$回である。
 \end{thm}
 
-## 線形分離可能でない場合のパーセプトロンの学習
+## 線形分離可能でない場合のパーセプトロンの学習定理
 
 \begin{proof}
 ここでは$D>0$の場合を考える。
 
-線形分離可能でない問題をより高次元の線形分離可能な
+線形分離可能でない問題をより高次元の線形分離可能な問題に
+変換する。
+
+入力の次元を拡張して${\bf x}^{'}\in \mathbb R^{m+n}$とする。
+
+最初の$m$次元は元の入力と同じで、$m+i$次元は正の実数$\delta$、
+残りの次元は0とする。
+
+同様に重みベクトルも${\bf u}^{'}\in \mathbb R^{m+n}$に拡張する。
+
+最初の$m$次元は${\bf u}/z$、残りの$m+i$次元は$yd/z\delta$とする。
+
+ただし、$z=\sqrt{1+(D/\delta)^{2}}$
+\let\qedsymbol\relax
+\end{proof}
+
+
+## 線形分離可能でない場合のパーセプトロンの学習定理
+
+\begin{proof}
+このとき、
+\begin{align}
+\|{\bf u}^{'}\|^{2} &= \Sigma^{m}_{i=1} u^{'2}_{i}+\Sigma^{m+n}_{i=m+1} u^{'2}_{i} \nonumber\\
+                    &= \frac{\|{\bf u}\|^{2}}{z^{2}}+\Sigma^{m+n}_{i=m+1} \left(\frac{yd}{z\delta}\right)^{2} \nonumber\\
+                    &= \frac{1}{z^{2}}+\frac{D^{2}}{z^{2}\delta^{2}} \nonumber\\
+                    &= \frac{1+D^{2}/\delta^{2}}{z^{2}} \nonumber\\
+                    &= 1 \nonumber
+\end{align}
+よって、$\|{\bf u}^{'}\|=1$となる。
+
+\let\qedsymbol\relax
+\end{proof}
+
+## 線形分離可能でない場合のパーセプトロンの学習定理
+
+\begin{proof}
+また、
+
+\begin{align}
+y{\bf u}^{'T}{\bf x}^{'} &= y\left(\frac{{\bf u}^{T}{\bf x}}{z}+\delta \frac{yd}{z\delta}\right) \nonumber\\
+                         &= \frac{y{\bf u}^{T}{\bf x}}{z}+\frac{d}{z} \nonumber\\
+                         &\ge \frac{y{\bf u}^{T}{\bf x}}{z}+\frac{\gamma -y{\bf u}^{T}{\bf x}}{z} \nonumber\\
+                         &= \frac{\gamma}{z}\nonumber
+\end{align}
+また、拡張学習データの半径は$\|{\bf x}^{'}\|\le R^{2}+\delta^{2}$である。
+
+\let\qedsymbol\relax
+\end{proof}
+
+## 線形分離可能でない場合のパーセプトロンの学習定理
+
+\begin{proof}
+
+したがって、拡張学習データはマージン$\gamma/z$で線形分離可能で、
+半径は$R^{2}+\delta^{2}$以下となる。
+
+パーセプトロンの学習定理より、更新回数の上限は
+\begin{align}
+\frac{(R^{2}+\delta^{2})z^{2}}{\gamma^{2}}
+\end{align}
+
+ここで、$z=\sqrt{1+(D/\delta)^{2}}$を代入して$(8)$式を最小化するように
+$\delta=\sqrt{RD}$を選ぶことで、上限は
+
+\begin{align}
+\left(\frac{R+D}{\gamma}\right)^{2} \nonumber
+\end{align}
+
+となる。
+\let\qedsymbol\relax
+\end{proof}
+
+
+## 線形分離可能でない場合のパーセプトロンの学習定理
+
+\begin{proof}
+
+また、各ステップ$1\le i\le n$について、拡張された重み${\bf w}^{'}$
+の最初の$m$次元は元の重みと一致し、$i$ステップ目のときの$m+i$次元の
+重みは$0$である。これより、
+\begin{align}
+\mathrm{sign}({\bf w}^{'T}{\bf x}^{'}) = \mathrm{sign}({\bf w}^{T}{\bf x}) \nonumber
+\end{align}
+
+となり拡張した場合の推定結果と元の重みによる推定結果は一致する。
+パーセプトロンの更新条件は推定結果にのみ依存するので、元の学習
+データにおけるパーセプトロンと拡張学習データでのパーセプトロン
+は全く同じ学習データで更新を行う。
 \let\qedsymbol\relax
 \end{proof}
