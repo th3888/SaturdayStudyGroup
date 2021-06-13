@@ -277,4 +277,7 @@ $\Sigma f^{(t)}(\theta^{(t)})$を最小化するか
 \begin{df}[戦略のリグレット]
 ある戦略$A$に基づくアクションの合計コストと最適戦略$\theta^{*}$
 による合計コストの差を戦略$A$のリグレット$Regret(A)$と定義する。
+\begin{align}
+Regret(A)=\Sigma^{T}_{t=1} f^{(t)}(\theta^{(t)})-\Sigma^{T}_{t=1} f^{(t)}(\theta^{*})
+\end{align}
 \end{df}
