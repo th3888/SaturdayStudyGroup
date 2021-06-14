@@ -281,3 +281,9 @@ $\Sigma f^{(t)}(\theta^{(t)})$を最小化するか
 Regret(A)=\Sigma^{T}_{t=1} f^{(t)}(\theta^{(t)})-\Sigma^{T}_{t=1} f^{(t)}(\theta^{*}) \nonumber
 \end{align}
 \end{df}
+
+## リグレット解析
+
+リグレット解析の意味付け
+
+- $Regret(A)$が$T$についての線形な関数ならば
