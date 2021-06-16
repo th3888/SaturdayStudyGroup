@@ -95,3 +95,46 @@ ${\pmb \theta}^{(t)}\in \mathbb R^{m}$をアクションとする
 
 - アクション$\theta \in [-1,1]$、コスト関数$f^{(t)}(\theta)=(1/2)(-1)^{t}\theta$
 を考える
+
+- このとき、アクションは$\theta^{(1)}=0, \theta^{(2)}=-1, \theta^{(2)}=1,...$と最初を除き$-1$と$1$を行き来する
+
+- コスト関数は$f^{(1)}(\theta^{(1)})=0,f^{(2)}(\theta^{(2)})=1/2,f^{(3)}(\theta^{(3)})=1/2,...$と最初を除き$1/2$となる
+
+## Follow the Leader
+
+- 一方、最適戦略は$\theta=0$であり、合計コストは$0$
+
+- よって、この場合のFTLのリグレットは$T$に対して線形な関数で
+最適戦略に近づくことはない
+
+- FTLの拡張を考える必要がある
+
+## Regularized Follow the Reader
+
+- Regularized Follow the Reader(RFTL)
+
+\begin{align}
+{\pmb \theta}^{(1)} = \argmin_{{\pmb \theta}\in K}\eta \Sigma_{i=1}^{t-1} f^{(t)}({\pmb \theta})+R({\pmb \theta}) \nonumber
+\end{align}
+
+- $R({\pmb \theta})$は凸な正則化関数、$\eta\ge 0$は正則化の程度
+を定めるパラメータ
+
+- 最初のアクションを定めるとき、コスト関数が提示されていないので
+正則化項のみで定める
+
+\begin{align}
+{\pmb \theta}^{(1)} = \argmin_{{\pmb \theta}\in K}R({\pmb \theta}) \nonumber
+\end{align}
+
+## Regularized Follow the Reader
+
+- RFTLのリグレットを導入するために補題と定義を導入する
+
+\begin{lm}
+任意のベクトル${\pmb u}\in K$について、次が成り立つ。
+\begin{align}
+\Sigma{\pmb f}^{(t)T}({\pmb \theta}^{(t)}-{\pmb u}) \le \Sigma{\pmb f}^{(t)T}({\pmb \theta}^{(t)}-{\pmb \theta}^{t+1})+\frac{1}{\eta}(R({\pmb u})-R({\pmb \theta}^{(1)}))
+\end{align}
+
+\end{lm}
