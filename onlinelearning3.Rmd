@@ -12,6 +12,7 @@ header-includes:
   - \newtheorem{df}{定義}
   - \newtheorem{thm}{定理}
   - \newtheorem{lm}{補題}
+  - \newcommand{\argmin}{\mathop{\rm arg~min}\limits}
 ---
 
 ```{r setup, include=FALSE}
@@ -314,5 +315,12 @@ ${\pmb \theta}^{(t)}\in \mathbb R^{m}$をアクションとする
 
 
 ## リグレット解析
+
+- 単純な戦略として、これまでの合計コストを最小にするような
+アクションを選ぶものを考える
+
+\begin{align}
+{\pmb \theta}^{(1)} = \argmin_{{\pmb \theta}\in K}\Sigma^{t-1}_{i=1} f^{(t)}({\pmb \theta}) \nonumber
+\end{align}
 
 
