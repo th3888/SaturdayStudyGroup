@@ -78,7 +78,7 @@ ${\pmb \theta}^{(t)}\in \mathbb R^{m}$をアクションとする
 最小にするアクションを選ぶ戦略となる
 
 
-## リグレット解析
+## Follow the Leader
 
 - 単純な戦略として、これまでの合計コストを最小にするような
 アクションを選ぶものを考える
@@ -88,3 +88,7 @@ ${\pmb \theta}^{(t)}\in \mathbb R^{m}$をアクションとする
 \end{align}
 
 - この戦略のことをFollow the Leader(FTL)という
+
+## Follow the Reader
+
+- この戦略ではうまくいかないケースがある
