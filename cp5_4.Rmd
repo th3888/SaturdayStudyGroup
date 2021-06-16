@@ -87,3 +87,4 @@ ${\pmb \theta}^{(t)}\in \mathbb R^{m}$をアクションとする
 {\pmb \theta}^{(1)} = \argmin_{{\pmb \theta}\in K}\Sigma_{i=1}^{t-1} f^{(t)}({\pmb \theta}) \nonumber
 \end{align}
 
+- この戦略のことをFollow the Leader(FTL)という
