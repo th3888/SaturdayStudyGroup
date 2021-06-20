@@ -134,7 +134,46 @@ ${\pmb \theta}^{(t)}\in \mathbb R^{m}$をアクションとする
 \begin{lm}
 任意のベクトル${\pmb u}\in K$について、次が成り立つ。
 \begin{align}
-\Sigma{\pmb f}^{(t)T}({\pmb \theta}^{(t)}-{\pmb u}) \le \Sigma{\pmb f}^{(t)T}({\pmb \theta}^{(t)}-{\pmb \theta}^{t+1})+\frac{1}{\eta}(R({\pmb u})-R({\pmb \theta}^{(1)}))
+\Sigma_{t=1}^{T}{\pmb f}^{(t)T}({\pmb \theta}^{(t)}-{\pmb u}) \le \Sigma_{t=1}^{T}{\pmb f}^{(t)T}({\pmb \theta}^{(t)}-{\pmb \theta}^{t+1})+\frac{1}{\eta}(R({\pmb u})-R({\pmb \theta}^{(1)}))
 \end{align}
 
 \end{lm}
+
+
+## Regularized Follow the Reader
+
+\begin{proof}
+
+${\pmb f}^{(0)}=\frac{1}{\eta}R({\pmb \theta})$とし、
+アルゴリズムは$t=0$から始まるものとすると、
+
+\begin{align}
+\Sigma_{t=0}^{T}{\pmb f}^{(t)}({\pmb \theta}) = \Sigma_{t=1}^{T}{\pmb f}^{(t)}({\pmb \theta}) + \frac{1}{\eta}R({\pmb \theta}) \nonumber
+\end{align}
+
+このとき、補題は
+\begin{align}
+\Sigma_{t=0}^{T}{\pmb f}^{(t)T}({\pmb \theta}^{(t)}-{\pmb u}) \le \Sigma_{t=0}^{T}{\pmb f}^{(t)T}({\pmb \theta}^{(t)}-{\pmb \theta}^{t+1}) \nonumber
+\end{align}
+と表現できる。
+
+\let\qedsymbol\relax
+\end{proof}
+
+
+## Regularized Follow the Reader
+
+\begin{proof}
+$t=0$のとき
+
+定義より${\pmb \theta}^{(1)}=\argmin_{\pmb \theta} R({\pmb \theta})$であり、
+${\pmb f}^{(0)}({\pmb \theta}^{(1)})\le {\pmb f}^{(0)}({\pmb u})$が成り立つ。
+
+よって、
+\begin{align}
+{\pmb f}^{(0)}({\pmb \theta}^{(0)})-{\pmb f}^{(0)}({\pmb u})\le {\pmb f}^{(0)}({\pmb \theta}^{(0)})-{\pmb f}^{(0)}({\pmb \theta}^{(1)}) \nonumber
+\end{align}
+
+
+\end{proof}
+
