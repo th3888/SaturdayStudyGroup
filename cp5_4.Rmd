@@ -187,11 +187,24 @@ $t=T$で補題が成り立っていると仮定する。
 
 このとき、
 \begin{align}
-{\pmb \theta}^{(T+2)}=\argmin_{{\pmb \theta}}\Sigma_{t=0}^{T+1}{\pmb f}^{(t)}({\pmb \theta})\nonumber
+{\pmb \theta}^{(T+2)}=\argmin_{{\pmb \theta}}\Sigma_{t=0}^{T+1}{\pmb f}^{(t)}({\pmb \theta})
 \end{align}
 \begin{align}
-{\pmb \theta}^{(T+1)}=\argmin_{{\pmb \theta}}\Sigma_{t=0}^{T}{\pmb f}^{(t)}({\pmb \theta})\nonumber
+{\pmb \theta}^{(T+1)}=\argmin_{{\pmb \theta}}\Sigma_{t=0}^{T}{\pmb f}^{(t)}({\pmb \theta})
+\end{align}
+
+\let\qedsymbol\relax
+\end{proof}
+
+
+## Regularized Follow the Reader
+
+\begin{proof}
+
+$(2),(3)$式を利用すると、
+\begin{align}
+&\Sigma_{t=0}^{T+1}{\pmb f}^{(t)T}({\pmb \theta}^{(t)}-{\pmb u}) \\
+&\le \Sigma_{t=0}^{T+1}{\pmb f}^{(t)}({\pmb \theta}^{(t)}) - \Sigma_{t=0}^{T+1}{\pmb f}^{(t)}({\pmb \theta}^{(T+2)})
 \end{align}
 
 \end{proof}
-
