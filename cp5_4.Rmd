@@ -194,3 +194,7 @@ We also define $\|{\pmb x}\|_{{\pmb A}^{-1}}=\|{\pmb x}\|^{*}_{\pmb A}$ as a dua
 \end{df}
 
 - In this time, from generalized Cauchy-Schwarz inequality, the following holds.
+
+\begin{align}
+{\pmb x}^{T}{\pmb y}\le \|{\pmb x}\|_{\pmb A}\|{\pmb y}\|^{*}_{\pmb A} \nonumber
+\end{align}
