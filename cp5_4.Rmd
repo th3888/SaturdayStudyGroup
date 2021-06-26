@@ -221,3 +221,14 @@ A diameter measured by the regularization function is defined as
 D=\max_{{\pmb \theta}\in K}R({\pmb \theta})-R({\pmb \theta}^{(1)})\nonumber
 \end{align}
 \end{df}
+
+
+## Regularized Follow the Leader
+
+\begin{thm}[regret of RFTL]
+RFTL achives the following regret for any vector ${\pmb u}\in K$.
+
+\begin{align}
+Regret(A) = \Sigma_{t=1}^{T}{\pmb f}^{(t)T}({\pmb \theta}^{(t)}-{\pmb u}) \le 2\sqrt{2\lambda DT} \nonumber
+\end{align}
+\end{thm}
