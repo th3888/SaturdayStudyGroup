@@ -176,7 +176,7 @@ Using equation $(2)$ and $(3)$,
 
 \begin{align}
 &\Sigma_{t=0}^{T+1}{\pmb f}^{(t)T}({\pmb \theta}^{(t)}-{\pmb u}) \nonumber\\
-&\le \Sigma_{t=0}^{T+1}{\pmb f}^{(t)}({\pmb \theta}^{(t)}) - \Sigma_{t=0}^{T+1}{\pmb f}^{(t)}({\pmb \theta}^{(T+2)}) \nonumber
+&\le \Sigma_{t=0}^{T+1}{\pmb f}^{(t)}({\pmb \theta}^{(t)}) - \Sigma_{t=0}^{T+1}{\pmb f}^{(t)}({\pmb \theta}^{(T+2)}) \nonumber\\
+&= \Sigma_{t=0}^{T}({\pmb f}^{(t)}({\pmb \theta}^{(t)})-{\pmb f}^{(t)}({\pmb \theta}^{(T+2)}))+{\pmb f}^{(T+1)}({\pmb \theta}^{(T+1)})-{\pmb f}^{(T+1)}({\pmb \theta}^{(T+2)}) \nonumber
 \end{align}
-
 \end{proof}
