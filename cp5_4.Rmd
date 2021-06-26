@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Regret Analysis
 
-- A player chooses an action ${\theta}^{(t)}\in K$ every $t$ period. K is a feasible set of actions.
+- A player chooses an action ${\theta}^{(t)}\in K$ every $t$ period, where K is a feasible set of actions.
 
 - The cost function $f^{(t)}$ determines the cost $f^{(t)}(\theta^{(t)})$ for action $\theta^{(t)}$.
 
@@ -43,5 +43,14 @@ Regret(A)=\Sigma^{T}_{t=1} f^{(t)}(\theta^{(t)})-\Sigma^{T}_{t=1} f^{(t)}(\theta
 \end{df}
 
 
+## Regret Analysis
+
+Regret analysis in online learning
+
+- Let action be the parameter of the online learner ${\pmb \theta}^{(t)}\in \mathbb R^{m}$ given the training data $({\pmb x}^{(t)},y^{(t)})$.
+
+- Let the cost function be a loss function $f^{(t)}=({\pmb x}^{(t)},y^{(t)},{\pmb \theta})$.
+
+- In this case, the optimal strategy is the strategy that chooses the action that minimizes the cost function for all training data.
 
 
