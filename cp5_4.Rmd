@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Regret Analysis
 
-- A player chooses an action ${\theta}^{(t)}\in K$ every $t$ period, where K is a feasible set of actions.
+- A player chooses an action ${\theta}^{(t)}\in K$ every $t$ period, where $K$ is a feasible set of actions.
 
 - The cost function $f^{(t)}$ determines the cost $f^{(t)}(\theta^{(t)})$ for action $\theta^{(t)}$.
 
@@ -64,9 +64,9 @@ Regret analysis in online learning
 
 - This strategy is called Follow the Leader (FTL).
 
-## Follow the Reader
+## Follow the Leader
 
-- However, there are cases where FTK doesn't work.
+- However, there are cases where FTL doesn't work.
 
 - Consider action $\theta \in [-1,1]$ and cost function $f^{(t)}(\theta)=(1/2)(-1)^{t}\theta$.
 
@@ -84,9 +84,9 @@ Regret analysis in online learning
 - We have to expand FTL.
 
 
-## Regularized Follow the Reader
+## Regularized Follow the Leader
 
-- Regularized Follow the Reader (RFTL)
+- Regularized Follow the Leader (RFTL)
 
 \begin{align}
 {\pmb \theta}^{(t)} = \argmin_{{\pmb \theta}\in K}\eta \Sigma_{i=1}^{t-1} f^{(t)}({\pmb \theta})+R({\pmb \theta}) \nonumber
@@ -100,9 +100,9 @@ Regret analysis in online learning
 {\pmb \theta}^{(1)} = \argmin_{{\pmb \theta}\in K}R({\pmb \theta}) \nonumber
 \end{align}
 
-## Regularized Follow the Reader
+## Regularized Follow the Leader
 
-- We introduce lemma and definitions to derive RFTR regret.
+- We introduce lemma and definitions to derive RFTL regret.
 
 \begin{lm}
 For any vector ${\pmb u}\in K$, the following holds.
@@ -113,7 +113,7 @@ For any vector ${\pmb u}\in K$, the following holds.
 \end{lm}
 
 
-## Regularized Follow the Reader
+## Regularized Follow the Leader
 
 \begin{proof}
 
@@ -132,7 +132,7 @@ In this time, the lemma can be expressed as following.
 \end{proof}
 
 
-## Regularized Follow the Reader
+## Regularized Follow the Leader
 
 \begin{proof}
 At $t=0$,
