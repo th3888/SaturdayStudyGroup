@@ -130,3 +130,19 @@ In this time, the lemma can be expressed as following.
 
 \let\qedsymbol\relax
 \end{proof}
+
+
+## Regularized Follow the Reader
+
+\begin{proof}
+At $t=0$,
+
+by definition, ${\pmb \theta}^{(1)}=\argmin_{\pmb \theta} R({\pmb \theta})$ and ${\pmb f}^{(0)}({\pmb \theta}^{(1)})\le {\pmb f}^{(0)}({\pmb u})$ holds.
+
+therefore, 
+\begin{align}
+{\pmb f}^{(0)}({\pmb \theta}^{(0)})-{\pmb f}^{(0)}({\pmb u})\le {\pmb f}^{(0)}({\pmb \theta}^{(0)})-{\pmb f}^{(0)}({\pmb \theta}^{(1)}) \nonumber
+\end{align}
+
+\let\qedsymbol\relax
+\end{proof}
