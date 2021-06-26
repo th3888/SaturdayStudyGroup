@@ -74,3 +74,11 @@ Regret analysis in online learning
 
 - The cost function is $1/2$ except for the first, as $f^{(1)}(\theta^{(1)})=0,f^{(2)}(\theta^{(2)})=1/2,f^{(3)}(\theta^{(3)})=1/2,...$.
 
+
+## Follow the Leader
+
+- On the other hand, The optimal strategy is $\theta=0$ and the total cost of it is $0$.
+  
+- Therefore, FTL regret in this case doesn't approach $0$.
+
+- We have to expand FTL.
