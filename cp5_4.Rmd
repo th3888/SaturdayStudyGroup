@@ -82,3 +82,20 @@ Regret analysis in online learning
 - Therefore, FTL regret in this case doesn't approach $0$.
 
 - We have to expand FTL.
+
+
+## Regularized Follow the Reader
+
+- Regularized Follow the Reader (RFTL)
+
+\begin{align}
+{\pmb \theta}^{(t)} = \argmin_{{\pmb \theta}\in K}\eta \Sigma_{i=1}^{t-1} f^{(t)}({\pmb \theta})+R({\pmb \theta}) \nonumber
+\end{align}
+
+- Let $R({\pmb \theta})$ be convex regularization function. Let $\eta\ge 0$ be parameter that determines the degree of regularization.
+
+- When choosing the first action, the cost function is not presented, so action is determined only by the regularization term.
+
+\begin{align}
+{\pmb \theta}^{(1)} = \argmin_{{\pmb \theta}\in K}R({\pmb \theta}) \nonumber
+\end{align}
