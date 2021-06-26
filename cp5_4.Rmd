@@ -183,3 +183,12 @@ Using equation $(2)$ and $(3)$,
 &= \Sigma_{t=0}^{T+1}{\pmb f}^{(t)}({\pmb \theta}^{(t)}-{\pmb \theta}^{(t+1)}) \nonumber
 \end{align}
 \end{proof}
+
+
+## Regularized Follow the Leader
+
+\begin{df}[norm based on positive semi-definite matrix]
+We define $\|{\pmb x}\|_{{\pmb A}}=\sqrt{{\pmb x}^{T}{\pmb A}{\pmb x}}$ as the norm of vector $\pmb x$ based on positve semi-definite matrix $\pmb A$.
+
+We also define $\|{\pmb x}\|_{{\pmb A}^{-1}}=\|{\pmb x}\|^{*}_{\pmb A}$ as a dual norm. 
+\end{df}
