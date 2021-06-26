@@ -54,3 +54,13 @@ Regret analysis in online learning
 - In this case, the optimal strategy is the strategy that chooses the action that minimizes the cost function for all training data.
 
 
+## Follow the Leader
+
+- At first, We consider strategy for choosing action that minimizes the total cost to date.
+
+\begin{align}
+{\pmb \theta}^{(t)} = \argmin_{{\pmb \theta}\in K}\Sigma_{i=1}^{t-1} f^{(t)}({\pmb \theta}) \nonumber
+\end{align}
+
+- This strategy is called Follow the Leader (FTL).
+
