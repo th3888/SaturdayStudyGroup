@@ -64,3 +64,13 @@ Regret analysis in online learning
 
 - This strategy is called Follow the Leader (FTL).
 
+## Follow the Reader
+
+- However, there are cases where FTK doesn't work.
+
+- Consider action $\theta \in [-1,1]$ and cost function $f^{(t)}(\theta)=(1/2)(-1)^{t}\theta$.
+
+- In this case, the action goes back and forth between $-1$ and $1$ except for the first, as $\theta^{(1)}=0, \theta^{(2)}=-1, \theta^{(2)}=1,...$.
+
+- The cost function is $1/2$ except for the first, as $f^{(1)}(\theta^{(1)})=0,f^{(2)}(\theta^{(2)})=1/2,f^{(3)}(\theta^{(3)})=1/2,...$.
+
