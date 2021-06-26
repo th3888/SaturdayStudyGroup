@@ -111,3 +111,22 @@ For any vector ${\pmb u}\in K$, the following holds.
 \end{align}
 
 \end{lm}
+
+
+## Regularized Follow the Reader
+
+\begin{proof}
+
+For simplicity, let us assume that ${\pmb f}^{(0)}=\frac{1}{\eta}R({\pmb \theta})$ and the algorithm starts at $t=0$.
+
+\begin{align}
+\Sigma_{t=0}^{T}{\pmb f}^{(t)}({\pmb \theta}) = \Sigma_{t=1}^{T}{\pmb f}^{(t)}({\pmb \theta}) + \frac{1}{\eta}R({\pmb \theta}) \nonumber
+\end{align}
+
+In this time, the lemma can be expressed as following.
+\begin{align}
+\Sigma_{t=0}^{T}{\pmb f}^{(t)T}({\pmb \theta}^{(t)}-{\pmb u}) \le \Sigma_{t=0}^{T}{\pmb f}^{(t)T}({\pmb \theta}^{(t)}-{\pmb \theta}^{(t+1)}) \nonumber
+\end{align}
+
+\let\qedsymbol\relax
+\end{proof}
