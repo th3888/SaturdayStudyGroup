@@ -24,9 +24,23 @@ knitr::opts_chunk$set(echo = FALSE)
 
 - The cost function $f^{(t)}$ determines the cost $f^{(t)}(\theta^{(t)})$ for action $\theta^{(t)}$.
 
-- The player decides his action based on strategy.
+- The player decides his action based on the strategy.
 
 
+## Regret Analysis
+
+- How does the player choose an action which minimizes a total cost $\Sigma f^{(t)}(\theta^{(t)})$?
+
+- Can the cost function be minimized even if it is not unknown?
+
+- We introduce a regret about the strategy.
+
+\begin{df}[Regret]
+The difference between the total cost of an action based on a strategy $A$ and the total cost of the optimal strategy $\theta^{*}$ is defined as the regret $Regret(A)$ of strategy $A$.
+\begin{align}
+Regret(A)=\Sigma^{T}_{t=1} f^{(t)}(\theta^{(t)})-\Sigma^{T}_{t=1} f^{(t)}(\theta^{*}) \nonumber
+\end{align}
+\end{df}
 
 
 
