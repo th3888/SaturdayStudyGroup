@@ -146,3 +146,24 @@ therefore,
 
 \let\qedsymbol\relax
 \end{proof}
+
+
+## Regularized Follow the Leader
+
+\begin{proof}
+
+At $t>0$,
+
+assume that lemma holds for $t=T$.
+
+In this time, 
+\begin{align}
+{\pmb \theta}^{(T+2)}=\argmin_{{\pmb \theta}}\Sigma_{t=0}^{T+1}{\pmb f}^{(t)}({\pmb \theta})
+\end{align}
+\begin{align}
+{\pmb \theta}^{(T+1)}=\argmin_{{\pmb \theta}}\Sigma_{t=0}^{T}{\pmb f}^{(t)}({\pmb \theta})
+\end{align}
+
+
+\end{proof}
+
