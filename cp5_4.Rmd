@@ -192,3 +192,5 @@ We define $\|{\pmb x}\|_{{\pmb A}}=\sqrt{{\pmb x}^{T}{\pmb A}{\pmb x}}$ as the n
 
 We also define $\|{\pmb x}\|_{{\pmb A}^{-1}}=\|{\pmb x}\|^{*}_{\pmb A}$ as a dual norm. 
 \end{df}
+
+- In this time, from generalized Cauchy-Schwarz inequality, the following holds.
