@@ -167,3 +167,16 @@ In this time,
 
 \end{proof}
 
+
+## Regularized Follow the Leader
+
+\begin{proof}
+
+Using equation $(2)$ and $(3)$,
+
+\begin{align}
+&\Sigma_{t=0}^{T+1}{\pmb f}^{(t)T}({\pmb \theta}^{(t)}-{\pmb u}) \nonumber\\
+&\le \Sigma_{t=0}^{T+1}{\pmb f}^{(t)}({\pmb \theta}^{(t)}) - \Sigma_{t=0}^{T+1}{\pmb f}^{(t)}({\pmb \theta}^{(T+2)}) \nonumber
+\end{align}
+
+\end{proof}
