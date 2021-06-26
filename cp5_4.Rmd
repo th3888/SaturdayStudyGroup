@@ -198,3 +198,14 @@ We also define $\|{\pmb x}\|_{{\pmb A}^{-1}}=\|{\pmb x}\|^{*}_{\pmb A}$ as a dua
 \begin{align}
 {\pmb x}^{T}{\pmb y}\le \|{\pmb x}\|_{\pmb A}\|{\pmb y}\|^{*}_{\pmb A} \nonumber
 \end{align}
+
+
+## Regularized Follow the Leader
+
+\begin{df}[norm of cost function]
+A norm of cost function measured by the regularization function is difined as
+
+\begin{align}
+\lambda = \max_{t,{\pmb \theta}\in K}{\pmb f}^{(t)T}\{\nabla^{2}R({\pmb \theta})\}^{-1}{\pmb f}^{(t)} \nonumber
+\end{align}
+\end{df}
