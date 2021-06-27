@@ -232,3 +232,27 @@ RFTL achives the following regret for any vector ${\pmb u}\in K$.
 Regret(A) = \Sigma_{t=1}^{T}{\pmb f}^{(t)T}({\pmb \theta}^{(t)}-{\pmb u}) \le 2\sqrt{2\lambda DT} \nonumber
 \end{align}
 \end{thm}
+
+
+## Regularized Follow the Leader
+
+\begin{proof}
+
+At first, we define $\Phi$ as following.
+
+\begin{align}
+\Phi^{(t)}({\pmb \theta})=\eta\Sigma_{i=1}^{t}f^{(i)}({\pmb \theta})+R({\pmb \theta})\nonumber
+\end{align}
+
+By Taylor expansion of $\Phi^{(t)}$ around ${\pmb \theta}^{(t+1)}$ and using the intermediate value theorem, we can show following.
+
+
+\let\qedsymbol\relax
+\end{proof}
+
+
+## Regularized Follow the Leader
+
+\begin{proof}
+
+\end{proof}
