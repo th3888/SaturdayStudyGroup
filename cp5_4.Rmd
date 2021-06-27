@@ -271,3 +271,21 @@ By transforming the equation, we can get following.
 \end{align}
 
 \end{proof}
+
+
+## Regularized Follow the Leader
+
+\begin{proof}
+Also, using generalized Cauchy-Schwarz inequality, the following holds.
+
+\begin{align}
+{\pmb f}^{(t)T}({\pmb \theta}^{(t)}-{\pmb \theta}^{(t+1)})&\le \|{\pmb f}^{(t)}\|^{*}_{\pmb z}\|{\pmb \theta}^{(t)}-{\pmb \theta}^{(t+1)}\|_{\pmb z}\nonumber\\
+&\le \|{\pmb f}^{(t)}\|^{*}_{\pmb z}\sqrt{2\eta{\pmb f}^{(t)T}({\pmb \theta}^{(t)}-{\pmb \theta}^{(t+1)})}\nonumber
+\end{align}
+
+furthermore,
+
+\begin{align}
+{\pmb f}^{(t)T}({\pmb \theta}^{(t)}-{\pmb \theta}^{(t+1)})\le 2\eta \|{\pmb f}^{(t)}\|^{*2}_{\pmb z}\le 2\eta\lambda 
+\end{align}
+\end{proof}
