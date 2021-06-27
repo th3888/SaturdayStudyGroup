@@ -299,3 +299,16 @@ Using $(1)$ and $(4)$, adding up to $T$ and letting $\eta$ be $\eta = \sqrt{\fra
 Regret(A)\le min_{\eta}\left[2\eta\lambda T + \frac{1}{\eta}\{R({\pmb u})-R({\pmb \theta}^{(t)})\}\right]\le 2\sqrt{2D\lambda T}\nonumber
 \end{align}
 \end{proof}
+
+## Regret with strictly convex loss function
+
+- If the loss function is a strictly convex function, even smaller regret can be obtained by gradient descent.
+
+- Gradient descent method updates the parameters based on the following update rule.
+
+\begin{align}
+&{\pmb \theta}^{'(t)}={\pmb \theta}^{(t-1)}-\eta_{t-1}\nabla{\pmb f}^{(t-1)}({\pmb theta}^{(t-1)})\nonumber\\
+&{\pmb \theta}^{(t)}=\argmin_{{\pmb \theta}\in K}\|{\pmb \theta}-{\pmb \theta}^{'(t)}\|_{2}\nonumber
+\end{align}
+
+- This algorithm updates the parameters based on the gradient of the current position and maps it to the nearest point on the feasible area.
