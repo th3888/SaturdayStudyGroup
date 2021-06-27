@@ -244,7 +244,7 @@ At first, we define $\Phi$ as following.
 \Phi^{(t)}({\pmb \theta})=\eta\Sigma_{i=1}^{t}f^{(i)}({\pmb \theta})+R({\pmb \theta})\nonumber
 \end{align}
 
-By Taylor expansion of $\Phi^{(t)}$ around ${\pmb \theta}^{(t+1)}$ and using the intermediate value theorem, we can show following.
+By Taylor expansion of $\Phi^{(t)}$ around ${\pmb \theta}^{(t+1)}$ and using intermediate value theorem, we can show following.
 
 \begin{align}
 \Phi^{(t)}({\pmb \theta}^{(t)})&=\Phi^{(t)}({\pmb \theta}^{(t+1)})+({\pmb \theta}^{(t)}-{\pmb \theta}^{(t+1)})^{T}\nabla\Phi^{(t)}({\pmb \theta}^{(t+1)})\nonumber\\
@@ -258,5 +258,7 @@ By Taylor expansion of $\Phi^{(t)}$ around ${\pmb \theta}^{(t+1)}$ and using the
 ## Regularized Follow the Leader
 
 \begin{proof}
+Here, from intermediate value theorem, ${\pmb z}^{(t)}\in [{\pmb \theta}^{(t+1)},{\pmb \theta}^{(t)}]$
 
+This inequality holds because ${\pmb \theta}^{(t)}$ achieves the minimum value of $\Phi^{(t)}$.
 \end{proof}
