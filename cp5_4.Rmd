@@ -312,3 +312,15 @@ Regret(A)\le min_{\eta}\left[2\eta\lambda T + \frac{1}{\eta}\{R({\pmb u})-R({\pm
 \end{align}
 
 - This algorithm updates the parameters based on the gradient of the current position and maps it to the nearest point on the feasible area.
+
+## Regret with strictly convex loss function
+
+\begin{thm}[Regret with gradient descent for strictly convex loss functions]
+Gradient descent method with a learning rate of $\eta^{(t)}=\frac{1}{\alpha t}$ achieves the following regret for any vector ${\pmb u}\in K$.
+
+\begin{align}
+Regret(A)=\Sigma_{t=1}^{T}{\pmb f}^{(t)T}({\pmb \theta}^{(t)}-{\pmb u})\le \frac{G^{2}}{2\alpha}(1+\log T)\nonumber
+\end{align}
+
+where, G is an upper bound on the Euclidean norm of the gradient.
+\end{thm}
