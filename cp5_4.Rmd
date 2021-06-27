@@ -246,7 +246,11 @@ At first, we define $\Phi$ as following.
 
 By Taylor expansion of $\Phi^{(t)}$ around ${\pmb \theta}^{(t+1)}$ and using the intermediate value theorem, we can show following.
 
-
+\begin{align}
+\Phi^{(t)}({\pmb \theta}^{(t)})&=\Phi^{(t)}({\pmb \theta}^{(t+1)})+({\pmb \theta}^{(t)}-{\pmb \theta}^{(t+1)})^{T}\nabla\Phi^{(t)}({\pmb \theta}^{(t+1)})\nonumber\\
+&+\frac{1}{2}\|{\pmb \theta}^{(t)}-{\pmb \theta}^{(t+1)}\|^{2}_{{\pmb z}^{(t)}}\nonumber\\
+&\ge \Phi^{(t)}({\pmb \theta}^{(t+1)})+\frac{1}{2}\|{\pmb \theta}^{(t)}-{\pmb \theta}^{(t+1)}\|^{2}_{{\pmb z}^{(t)}}\nonumber
+\end{align}
 \let\qedsymbol\relax
 \end{proof}
 
