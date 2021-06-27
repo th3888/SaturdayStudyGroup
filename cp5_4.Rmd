@@ -261,4 +261,13 @@ By Taylor expansion of $\Phi^{(t)}$ around ${\pmb \theta}^{(t+1)}$ and using int
 Here, from intermediate value theorem, ${\pmb z}^{(t)}\in [{\pmb \theta}^{(t+1)},{\pmb \theta}^{(t)}]$
 
 This inequality holds because ${\pmb \theta}^{(t)}$ achieves the minimum value of $\Phi^{(t)}$.
+
+By transforming the equation, we can get following.
+
+\begin{align}
+\|{\pmb \theta}^{(t)}-{\pmb \theta}^{(t+1)}\|^{2}_{{\pmb z}^{(t)}} &\le 2(\Phi^{(t)}({\pmb \theta}^{(t)})-\Phi^{(t)}({\pmb \theta}^{(t+1)}))\nonumber\\
+&=2(\Phi^{(t-1)}({\pmb \theta}^{(t)})-\Phi^{(t-1)}({\pmb \theta}^{(t+1)}))+2\eta{\pmb f}^{(t)T}({\pmb \theta}^{(t)}-{\pmb \theta}^{(t+1)})\nonumber\\
+&\le 2\eta{\pmb f}^{(t)T}({\pmb \theta}^{(t)}-{\pmb \theta}^{(t+1)})\nonumber
+\end{align}
+
 \end{proof}
