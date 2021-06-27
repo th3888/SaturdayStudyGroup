@@ -289,3 +289,13 @@ furthermore,
 {\pmb f}^{(t)T}({\pmb \theta}^{(t)}-{\pmb \theta}^{(t+1)})\le 2\eta \|{\pmb f}^{(t)}\|^{*2}_{\pmb z}\le 2\eta\lambda 
 \end{align}
 \end{proof}
+
+## Regularized Follow the Leader
+
+\begin{proof}
+Using $(1)$ and $(4)$, adding up to $T$ and letting $\eta$ be $\eta = \sqrt{\frac{D}{2\lambda T}}$ which minimizes this equation, we can get
+
+\begin{align}
+Regret(A)\le min_{\eta}\left[2\eta\lambda T + \frac{1}{\eta}\{R({\pmb u})-R({\pmb \theta}^{(t)})\}\right]\le 2\sqrt{2D\lambda T}\nonumber
+\end{align}
+\end{proof}
