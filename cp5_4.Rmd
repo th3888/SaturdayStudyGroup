@@ -107,7 +107,7 @@ Regret analysis in online learning
 \begin{lm}
 For any vector ${\pmb u}\in K$, the following holds.
 \begin{align}
-\Sigma_{t=1}^{T}{\pmb f}^{(t)T}({\pmb \theta}^{(t)}-{\pmb u}) \le \Sigma_{t=1}^{T}{\pmb f}^{(t)T}({\pmb \theta}^{(t)}-{\pmb \theta}^{t+1})+\frac{1}{\eta}\left\{R({\pmb u})-R({\pmb \theta}^{(1)})\right\}
+\Sigma_{t=1}^{T}{\pmb f}^{(t)T}({\pmb \theta}^{(t)}-{\pmb u}) \le \Sigma_{t=1}^{T}{\pmb f}^{(t)T}({\pmb \theta}^{(t)}-{\pmb \theta}^{(t+1)})+\frac{1}{\eta}\left\{R({\pmb u})-R({\pmb \theta}^{(1)})\right\}
 \end{align}
 
 \end{lm}
