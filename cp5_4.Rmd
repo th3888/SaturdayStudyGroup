@@ -380,3 +380,12 @@ Here, $\pi_{K}$ denotes the projection onto nearest point in $K$, $\pi_{K}({\pmb
 
 ## Regret with strong convex loss function
 
+\begin{thm}
+Online Gradient Descent with step sizes $\eta_{t}=\frac{1}{\alpha_{t}}$ achives the following guarantee, for all $T\ge1$
+
+\begin{align}
+Regret_{T}(OGD)\le \frac{G^{2}}{2\alpha}(1+\log{T}).\nonumber
+\end{align}
+
+
+\end{thm}
