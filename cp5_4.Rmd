@@ -309,14 +309,14 @@ Regret(A)\le min_{\eta}\left[2\eta\lambda T + \frac{1}{\eta}\{R({\pmb u})-R({\pm
 - We denote the number of iterations by $T$ which is unknown to the player.
 
 
-## Regret with storong convex loss function
+## Regret with strong convex loss function
 
 - At iteration $t$, the player chooses ${\pmb \theta}_{t}\in K$.
 
 - After committing to this choice, a convex cost function $f_{t}:K\mapsto \mathbb R$ is revealed.
 
 
-## Regret with storong convex loss function
+## Regret with strong convex loss function
 
 - Consider a player using an algorithm for online game playing (strategy) $A$.
 
@@ -324,7 +324,7 @@ Regret(A)\le min_{\eta}\left[2\eta\lambda T + \frac{1}{\eta}\{R({\pmb u})-R({\pm
 
 - When there is no ambiguity, we simply denote ${\pmb \theta}_{t}=A(\{f_{1},...,f_{t-1}\})$.
 
-## Regret with storong convex loss function
+## Regret with strong convex loss function
 
 - The regret of the online player using algorithm $A$ at time $T$ is defined to be the total cost minus the cost of the best single decision, where the best is chosen with the benefit of hindsight.
 
@@ -337,3 +337,21 @@ Regret(A, \{f_{1},...,f_{T}\})=E\left\{\sum_{t=1}^{T}f_{t}({\pmb \theta}_{t}) \r
 \begin{align}
 Regret_{T}(A)=\sup_{\{f_{1},...,f_{T}\}} \{Regret(A, \{f_{1},...,f_{T}\})\}.\nonumber
 \end{align}
+
+## Regret with strong convex loss function
+
+\begin{df}
+Denote by $D$ the diameter of the underlying convex set $K$, i.e.
+
+\begin{align}
+D=\max_{{\pmb x},{\pmb y}\in K}\|{\pmb x}-{\pmb y}\|_{2}.\nonumber
+\end{align}
+\end{df}
+
+\begin{df}
+We say that the cost functions have gradients upper bounded by a number G if the following holds:
+
+\begin{align}
+\sup_{{\pmb x}\in K, t\in\{1,...,T\}}\|\nabla f_{t}({\pmb x})\|_{2}\le G.\nonumber
+\end{align}
+\end{df}
