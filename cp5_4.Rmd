@@ -374,4 +374,9 @@ Inputs: convex set $K\subset \mathbb R^{n}$, step sizes $\eta_{1},\eta_{2},...\g
 \begin{align}
 {\pmb \theta}_{t}=\pi_{K}({\pmb \theta}_{t-1}-\eta\nabla f_{t-1}({\pmb \theta}_{t-1})).\nonumber
 \end{align}
+
+Here, $\pi_{K}$ denotes the projection onto nearest point in $K$, $\pi_{K}({\pmb y})=\argmin_{{\pmb \theta}\in K}\|{\pmb \theta}-{\pmb y}\|_{2}$.
 \end{alg}
+
+## Regret with strong convex loss function
+
