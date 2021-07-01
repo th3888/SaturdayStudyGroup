@@ -300,27 +300,18 @@ Regret(A)\le min_{\eta}\left[2\eta\lambda T + \frac{1}{\eta}\{R({\pmb u})-R({\pm
 \end{align}
 \end{proof}
 
-## Regret with strictly convex loss function
+## Regret with strong convex loss function
 
-- If the loss function is a strictly convex function, even smaller regret can be obtained by gradient descent.
+- a player chooses a point from a set in Euclidean space denoted $K\subseteq \mathbb R^{n}$.
 
-- Gradient descent method updates the parameters based on the following update rule.
+- We assume that the set $K$ is non-empty, bounded, closed and convex.
 
-\begin{align}
-&{\pmb \theta}^{'(t)}={\pmb \theta}^{(t-1)}-\eta_{t-1}\nabla{\pmb f}^{(t-1)}({\pmb theta}^{(t-1)})\nonumber\\
-&{\pmb \theta}^{(t)}=\argmin_{{\pmb \theta}\in K}\|{\pmb \theta}-{\pmb \theta}^{'(t)}\|_{2}\nonumber
-\end{align}
+- We denote the number of iterations by $T$ which is unknown to the player.
 
-- This algorithm updates the parameters based on the gradient of the current position and maps it to the nearest point on the feasible area.
 
-## Regret with strictly convex loss function
+## Regret with storong convex loss function
 
-\begin{thm}[Regret with gradient descent for strictly convex loss functions]
-Gradient descent method with a learning rate of $\eta^{(t)}=\frac{1}{\alpha t}$ achieves the following regret for any vector ${\pmb u}\in K$.
+- At iteration $t$, the player chooses ${\pmb \theta}_{t}\in K$.
 
-\begin{align}
-Regret(A)=\Sigma_{t=1}^{T}{\pmb f}^{(t)T}({\pmb \theta}^{(t)}-{\pmb u})\le \frac{G^{2}}{2\alpha}(1+\log T)\nonumber
-\end{align}
+- After committing to this choice, a convex cost function $f_{t}:K\mapsto \mathbb R$ is revealed.
 
-where, G is an upper bound on the Euclidean norm of the gradient.
-\end{thm}
