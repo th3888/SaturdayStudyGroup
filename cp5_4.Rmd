@@ -302,7 +302,7 @@ Regret(A)\le min_{\eta}\left[2\eta\lambda T + \frac{1}{\eta}\{R({\pmb u})-R({\pm
 
 ## Regret with strong convex loss function
 
-- a player chooses a point from a set in Euclidean space denoted $K\subseteq \mathbb R^{n}$.
+- a player chooses a point (action) from a set in Euclidean space denoted $K\subseteq \mathbb R^{n}$.
 
 - We assume that the set $K$ is non-empty, bounded, closed and convex.
 
@@ -314,4 +314,11 @@ Regret(A)\le min_{\eta}\left[2\eta\lambda T + \frac{1}{\eta}\{R({\pmb u})-R({\pm
 - At iteration $t$, the player chooses ${\pmb \theta}_{t}\in K$.
 
 - After committing to this choice, a convex cost function $f_{t}:K\mapsto \mathbb R$ is revealed.
+
+
+## Regret with storong convex loss function
+
+- Consider a player using an algorithm for online game playing (strategy) $A$.
+
+- At iteration $t$, the algorithm takes as input the history of cost function $f_{1},...,f_{t-1}$ and produces a feasible point $A(\{f_{1},...,f_{t-1}\})$ in the domain $K$.
 
