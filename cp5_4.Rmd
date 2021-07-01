@@ -12,6 +12,7 @@ header-includes:
   - \newtheorem{thm}{theorem}
   - \newtheorem{lm}{lemma}
   - \newcommand{\argmin}{\mathop{\rm arg~min}\limits}
+  - \newtheorem{alg}{algorithm}
 ---
 
 ```{r setup, include=FALSE}
@@ -363,3 +364,6 @@ Such function is called $\alpha$-strong convex.
 
 ## Regret with strong convex loss function
 
+\begin{alg}
+
+\end{alg}
