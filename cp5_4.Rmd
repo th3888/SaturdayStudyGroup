@@ -331,3 +331,9 @@ Regret(A)\le min_{\eta}\left[2\eta\lambda T + \frac{1}{\eta}\{R({\pmb u})-R({\pm
 \begin{align}
 Regret(A, \{f_{1},...,f_{T}\})=E\left\{\sum_{t=1}^{T}f_{t}({\pmb \theta}_{t}) \right\}-\min_{{\pmb \theta}\in K}\sum_{t=1}^{T}f_{t}({\pmb \theta}).\nonumber
 \end{align}
+
+- We are usually interested in an upper bound on the worst case guaranteed regret, denoted
+
+\begin{align}
+Regret_{T}(A)=\sup_{\{f_{1},...,f_{T}\}} \{Regret(A, \{f_{1},...,f_{T}\})\}.\nonumber
+\end{align}
