@@ -364,6 +364,14 @@ Such function is called $\alpha$-strong convex.
 
 ## Regret with strong convex loss function
 
-\begin{alg}
+\begin{alg}[Online Gradient Descent]
+Inputs: convex set $K\subset \mathbb R^{n}$, step sizes $\eta_{1},\eta_{2},...\ge0$, inital ${\pmb \theta}_{1}\in K$.
 
+- In iteration $1$, use ${\pmb \theta}_{1}\in K$.
+
+- In iteration $t>1$, use
+
+\begin{align}
+{\pmb \theta}_{t}=\pi_{K}({\pmb \theta}_{t-1}-\eta\nabla f_{t-1}({\pmb \theta}_{t-1})).\nonumber
+\end{align}
 \end{alg}
