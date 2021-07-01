@@ -341,17 +341,25 @@ Regret_{T}(A)=\sup_{\{f_{1},...,f_{T}\}} \{Regret(A, \{f_{1},...,f_{T}\})\}.\non
 ## Regret with strong convex loss function
 
 \begin{df}
-Denote by $D$ the diameter of the underlying convex set $K$, i.e.
+We say that the cost functions have gradients upper bounded by a number $G$ if the following holds:
 
 \begin{align}
-D=\max_{{\pmb x},{\pmb y}\in K}\|{\pmb x}-{\pmb y}\|_{2}.\nonumber
+\sup_{{\pmb \theta}\in K, t\in\{1,...,T\}}\|\nabla f_{t}({\pmb \theta})\|_{2}\le G.\nonumber
 \end{align}
 \end{df}
+
+## Regret with strong convex loss function
 
 \begin{df}
-We say that the cost functions have gradients upper bounded by a number G if the following holds:
+We say that the Hessian of all cost functions is lower bounded by a number $\alpha>0$, if the following holds:
 
 \begin{align}
-\sup_{{\pmb x}\in K, t\in\{1,...,T\}}\|\nabla f_{t}({\pmb x})\|_{2}\le G.\nonumber
+\forall {\pmb \theta}\in K,t\in \{f_{1},...,f_{T}\}: \nabla^{2}f_{t}({\pmb \theta})\succeq \alpha{\pmb I}_{n}.\nonumber
 \end{align}
+
+$H$ is a lower bound on eigenvalues of all the Hessians of the constraints at all points in the domain.
+Such function is called $\alpha$-strong convex.
 \end{df}
+
+## Regret with strong convex loss function
+
