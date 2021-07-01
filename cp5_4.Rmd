@@ -380,6 +380,19 @@ Here, $\pi_{K}$ denotes the projection onto nearest point in $K$, $\pi_{K}({\pmb
 
 ## Regret with strong convex loss function
 
+\begin{df}
+For a given positive semi-definite matrix ${\pmb A}$, a generalized projection of ${\pmb y}\in \mathbb R^{n}$ onto the convex set $K$ is defined as
+
+\begin{align}
+\pi^{\pmb A}_{K}(\pmb y)=\argmin_{{\pmb \theta}\in K}({\pmb \theta}-{\pmb y})^{\top}{\pmb A}({\pmb \theta}-{\pmb y}).\nonumber
+\end{align}
+
+Thus, the Euclidean projection can be seen to be a generalized projection with ${\pmb A}={\pmb I}_{n}$.
+\end{df}
+
+
+## Regret with strong convex loss function
+
 \begin{thm}
 Online Gradient Descent with step sizes $\eta_{t}=\frac{1}{\alpha_{t}}$ achives the following guarantee, for all $T\ge1$
 
