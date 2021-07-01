@@ -322,3 +322,4 @@ Regret(A)\le min_{\eta}\left[2\eta\lambda T + \frac{1}{\eta}\{R({\pmb u})-R({\pm
 
 - At iteration $t$, the algorithm takes as input the history of cost function $f_{1},...,f_{t-1}$ and produces a feasible point $A(\{f_{1},...,f_{t-1}\})$ in the domain $K$.
 
+- When there is no ambiguity, we simply denote ${\pmb \theta}_{t}=A(\{f_{1},...,f_{t-1}\})$.
