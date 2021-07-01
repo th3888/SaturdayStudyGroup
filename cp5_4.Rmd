@@ -391,6 +391,17 @@ Thus, the Euclidean projection can be seen to be a generalized projection with $
 \end{df}
 
 
+## Regret with strong convex function
+
+\begin{lm}
+Let $K\subseteq\mathbb R^{n}$ be a convex set, ${\pmb y}\in \mathbb R^{n}$ and ${\pmb z}=\pi^{\pmb A}_{K}({\pmb y})$ be the generalized projection of ${\pmb y}$ onto $K$ according to positive semi-definite matrix ${\pmb A}$.
+Then for any point ${\pmb a}\in K$ it holds that
+
+\begin{align}
+({\pmb y}-{\pmb a})^{\top}{\pmb A}({\pmb y}-{\pmb a})\ge ({\pmb z}-{\pmb a})^{\top}{\pmb A}({\pmb z}-{\pmb a}).\nonumber
+\end{align}
+\end{lm}
+
 ## Regret with strong convex loss function
 
 \begin{thm}
