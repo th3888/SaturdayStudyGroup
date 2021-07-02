@@ -458,7 +458,8 @@ Define $\nabla_{t}=\nabla f_{t}({\pmb \theta}_{t})$.
 By using the Taylor series approximation, we have, for some point $\xi_{t}$ on the line segment joining $\pmb \theta_{t}$ to $\pmb \theta^{*}$,
 
 \begin{align}
-f_{t}({\pmb \theta}^{*})=f_{t}({\pmb \theta}_{t})+\nabla^{\top}_{t}({\pmb \theta}^{*}-{\pmb \theta}_{t})
+f_{t}({\pmb \theta}^{*})&=f_{t}({\pmb \theta}_{t})+\nabla^{\top}_{t}({\pmb \theta}^{*}-{\pmb \theta}_{t})+\frac{1}{2}({\pmb \theta}^{*}-{\pmb \theta}_{t})^{\top}\nabla^{2}f_{t}(\xi_{t})({\pmb \theta}^{*}-{\pmb \theta}_{t})\nonumber\\
+&\ge f_{t}({\pmb \theta}_{t})+\nabla^{\top}_{t}({\pmb \theta}^{*}-{\pmb \theta}_{t})+\frac{H}{2}\|{\pmb \theta}^{*}-{\pmb \theta}_{t}\|^{2}.\nonumber
 \end{align}
 
 \end{proof}
