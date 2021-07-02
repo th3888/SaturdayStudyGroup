@@ -436,7 +436,7 @@ Now by simple calculation:
 ## Regret with strong convex loss function
 
 \begin{thm}
-Online Gradient Descent with step sizes $\eta_{t}=\frac{1}{\alpha_{t}}$ achives the following guarantee, for all $T\ge 1$
+Online Gradient Descent with step sizes $\eta_{t}=\frac{1}{\alpha t}$ achives the following guarantee, for all $T\ge 1$
 
 \begin{align}
 Regret_{T}(OGD)\le \frac{G^{2}}{2\alpha}(1+\log{T}).\nonumber
@@ -500,7 +500,10 @@ Hence,
 
 \begin{proof}
 
-Sum up $(6)$ from $t=1$ to $T$.
-Set $\eta$
+Sum up $(6)$ from $t=1$ to $T$ and using $(5)$, we have:
+
+\begin{align}
+2
+\end{align}
 
 \end{proof}
