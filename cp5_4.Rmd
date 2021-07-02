@@ -372,7 +372,7 @@ Inputs: convex set $K\subset \mathbb R^{n}$, step sizes $\eta_{1},\eta_{2},...\g
 - In iteration $t>1$, use
 
 \begin{align}
-{\pmb \theta}_{t}=\pi_{K}({\pmb \theta}_{t-1}-\eta\nabla f_{t-1}({\pmb \theta}_{t-1})).\nonumber
+{\pmb \theta}_{t}=\pi_{K}({\pmb \theta}_{t-1}-\eta_{t-1}\nabla f_{t-1}({\pmb \theta}_{t-1})).\nonumber
 \end{align}
 
 Here, $\pi_{K}$ denotes the projection onto nearest point in $K$, $\pi_{K}({\pmb y})=\argmin_{{\pmb \theta}\in K}\|{\pmb \theta}-{\pmb y}\|_{2}$.
@@ -478,8 +478,8 @@ Thus, we have
 Using the update rule for $\pmb \theta_{t+1}$ and lemma, we get
 
 \begin{align}
-\|{\pmb \theta}_{t+1}-{\pmb \theta^{*}}\|^{2}&=\|\pi({\pmb \theta}_{t}-\eta_{t+1}\nabla_{t})-{\pmb \theta}^{*}\|^{2}\nonumber\\
-&\le \|{\pmb \theta}_{t}-\eta_{t+1}\nabla_{t}-{\pmb \theta}^{*}\|^{2}.\nonumber
+\|{\pmb \theta}_{t+1}-{\pmb \theta^{*}}\|^{2}&=\|\pi({\pmb \theta}_{t}-\eta_{t}\nabla_{t})-{\pmb \theta}^{*}\|^{2}\nonumber\\
+&\le \|{\pmb \theta}_{t}-\eta_{t}\nabla_{t}-{\pmb \theta}^{*}\|^{2}.\nonumber
 \end{align}
 \end{proof}
 
@@ -490,8 +490,17 @@ Using the update rule for $\pmb \theta_{t+1}$ and lemma, we get
 Hence,
 
 \begin{align}
-&\|{\pmb \theta}_{t+1}-{\pmb \theta^{*}}\|^{2}\le \|{\pmb \theta}_{t}-{\pmb \theta^{*}}\|^{2}+\eta^{2}_{t+1}\|\nabla_{t}\|^{2}-2\eta_{t+1}\nabla^{\top}_{t}({\pmb \theta}_{t}-{\pmb \theta^{*}}),\nonumber\\
-&2\nabla^{\top}_{t}({\pmb \theta}_{t}-{\pmb \theta^{*}})\le \frac{\|{\pmb \theta}_{t}-{\pmb \theta^{*}}\|^{2}-\|{\pmb \theta}_{t+1}-{\pmb \theta^{*}}\|^{2}}{\eta_{t+1}}+\eta_{t+1}G^{2}
+&\|{\pmb \theta}_{t+1}-{\pmb \theta^{*}}\|^{2}\le \|{\pmb \theta}_{t}-{\pmb \theta^{*}}\|^{2}+\eta^{2}_{t}\|\nabla_{t}\|^{2}-2\eta_{t}\nabla^{\top}_{t}({\pmb \theta}_{t}-{\pmb \theta^{*}}),\nonumber\\
+&2\nabla^{\top}_{t}({\pmb \theta}_{t}-{\pmb \theta^{*}})\le \frac{\|{\pmb \theta}_{t}-{\pmb \theta^{*}}\|^{2}-\|{\pmb \theta}_{t+1}-{\pmb \theta^{*}}\|^{2}}{\eta_{t}}+\eta_{t}G^{2}.
 \end{align}
+
+\end{proof}
+
+## Regret with strong convex loss function
+
+\begin{proof}
+
+Sum up $(6)$ from $t=1$ to $T$.
+Set $\eta$
 
 \end{proof}
