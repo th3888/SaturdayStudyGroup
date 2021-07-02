@@ -442,5 +442,10 @@ Online Gradient Descent with step sizes $\eta_{t}=\frac{1}{\alpha_{t}}$ achives 
 Regret_{T}(OGD)\le \frac{G^{2}}{2\alpha}(1+\log{T}).\nonumber
 \end{align}
 
-
 \end{thm}
+
+## Regret with strong convex loss function
+
+\begin{proof}
+
+\end{proof}
