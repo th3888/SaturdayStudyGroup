@@ -358,7 +358,7 @@ We say that the Hessian of all cost functions is lower bounded by a number $\alp
 \forall {\pmb \theta}\in K,t\in \{f_{1},...,f_{T}\}: \nabla^{2}f_{t}({\pmb \theta})\succeq \alpha{\pmb I}_{n}.\nonumber
 \end{align}
 
-$H$ is a lower bound on eigenvalues of all the Hessians of the constraints at all points in the domain.
+$\alpha$ is a lower bound on eigenvalues of all the Hessians of the constraints at all points in the domain.
 Such function is called $\alpha$-strong convex.
 \end{df}
 
@@ -404,8 +404,39 @@ Then for any point ${\pmb a}\in K$ it holds that
 
 ## Regret with strong convex loss function
 
+\begin{proof}
+By definition of generalized projections, the point $\pmb z$ minimizes the function $f(\pmb \theta)=({\pmb \theta}-{\pmb y})^{\top}{\pmb A}({\pmb \theta}-{\pmb y})$ over the convex set.
+It is a well known fact in optimization that for the optimum $\pmb z$ the following holds.
+
+\begin{align}
+\forall {\pmb a}\in K: \nabla f(\pmb z)^{\top}({\pmb a}-{\pmb z})\ge 0\nonumber
+\end{align}
+
+which implies
+
+\begin{align}
+2({\pmb z}-{\pmb y})^{\top}{\pmb A}({\pmb a}-{\pmb z})\le 0\Rightarrow 2{\pmb a}^{\top}{\pmb A}({\pmb z}^{\pmb y})\ge 2{\pmb z}^{\top}{\pmb A}({\pmb z}^{\pmb y}).\nonumber
+\end{align}
+\end{proof}
+
+## Regret with strong convex loss function
+
+\begin{proof}
+Now by simple calculation:
+
+\begin{align}
+({\pmb y}-{\pmb a})^{\top}{\pmb A}({\pmb y}-{\pmb a})-({\pmb z}-{\pmb a})^{\top}{\pmb A}({\pmb z}-{\pmb a})&=\pmb y^{\top}{\pmb A}{\pmb y}-\pmb z^{\top}{\pmb A}{\pmb z}+2{\pmb a}^{\top}{\pmb A}({\pmb z}-{\pmb y})\nonumber\\
+&\ge \pmb y^{\top}{\pmb A}{\pmb y}-\pmb z^{\top}{\pmb A}{\pmb z}+2{\pmb z}^{\top}{\pmb A}({\pmb z}-{\pmb y})\nonumber\\
+&= \pmb y^{\top}{\pmb A}{\pmb y}-2\pmb z^{\top}{\pmb A}{\pmb y}+\pmb z^{\top}{\pmb A}{\pmb z}\nonumber\\
+&=({\pmb z}-{\pmb y})^{\top}{\pmb A}({\pmb z}-{\pmb y})\ge 0.\nonumber
+\end{align}
+\end{proof}
+
+
+## Regret with strong convex loss function
+
 \begin{thm}
-Online Gradient Descent with step sizes $\eta_{t}=\frac{1}{\alpha_{t}}$ achives the following guarantee, for all $T\ge1$
+Online Gradient Descent with step sizes $\eta_{t}=\frac{1}{\alpha_{t}}$ achives the following guarantee, for all $T\ge 1$
 
 \begin{align}
 Regret_{T}(OGD)\le \frac{G^{2}}{2\alpha}(1+\log{T}).\nonumber
