@@ -490,7 +490,7 @@ Using the update rule for $\pmb \theta_{t+1}$ and lemma, we get
 Hence,
 
 \begin{align}
-\|{\pmb \theta}_{t+1}-{\pmb \theta^{*}}\|\le 
+\|{\pmb \theta}_{t+1}-{\pmb \theta^{*}}\|^{2}\le \|{\pmb \theta}_{t}-{\pmb \theta^{*}}\|^{2}
 \end{align}
 
 \end{proof}
