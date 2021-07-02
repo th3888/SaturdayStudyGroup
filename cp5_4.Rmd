@@ -503,7 +503,7 @@ Hence,
 Sum up $(6)$ from $t=1$ to $T$ and using $(5)$, we have:
 
 \begin{align}
-2
+2\sum^{T}_{t=1}f_{t}({\pmb \theta}_{t})-f_{t}({\pmb \theta}^{*})\le \sum^{T}_{t=1}\|{\pmb \theta}_{t}-{\pmb \theta^{*}}\|^{2}
 \end{align}
 
 \end{proof}
