@@ -457,4 +457,8 @@ Regret_{T}(OGD) = \sum^{T}_{t=1}f_{t}({\pmb \theta}_{t})-\sum^{T}_{t=1}f_{t}({\p
 Define $\nabla_{t}=\nabla f_{t}({\pmb \theta}_{t})$.
 By using the Taylor series approximation, we have, for some point $\xi_{t}$ on the line segment joining $\pmb \theta_{t}$ to $\pmb \theta^{*}$,
 
+\begin{align}
+f_{t}({\pmb \theta}^{*})=f_{t}({\pmb \theta}_{t})+\nabla^{\top}_{t}({\pmb \theta}^{*}-{\pmb \theta}_{t})
+\end{align}
+
 \end{proof}
