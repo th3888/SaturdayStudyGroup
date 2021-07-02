@@ -447,5 +447,14 @@ Regret_{T}(OGD)\le \frac{G^{2}}{2\alpha}(1+\log{T}).\nonumber
 ## Regret with strong convex loss function
 
 \begin{proof}
+Let ${\pmb \theta}^{*}=\argmin \sum^{T}_{t=1}f_{t}({\pmb \theta})$.
+Recall the difinition of regret
+
+\begin{align}
+Regret_{T}(OGD) = \sum^{T}_{t=1}f_{t}({\pmb \theta}_{t})-\sum^{T}_{t=1}f_{t}({\pmb \theta}^{*}).\nonumber
+\end{align}
+
+Define $\nabla_{t}=\nabla f_{t}({\pmb \theta}_{t})$.
+By using the Taylor series approximation, we have, for some point $\xi_{t}$ on the line segment joining $\pmb \theta_{t}$ to $\pmb \theta^{*}$,
 
 \end{proof}
