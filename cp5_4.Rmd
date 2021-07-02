@@ -490,7 +490,8 @@ Using the update rule for $\pmb \theta_{t+1}$ and lemma, we get
 Hence,
 
 \begin{align}
-\|{\pmb \theta}_{t+1}-{\pmb \theta^{*}}\|^{2}\le \|{\pmb \theta}_{t}-{\pmb \theta^{*}}\|^{2}
+&\|{\pmb \theta}_{t+1}-{\pmb \theta^{*}}\|^{2}\le \|{\pmb \theta}_{t}-{\pmb \theta^{*}}\|^{2}+\eta^{2}_{t+1}\|\nabla_{t}\|^{2}-2\eta_{t+1}\nabla^{\top}_{t}({\pmb \theta}_{t}-{\pmb \theta^{*}}),\nonumber\\
+&2\nabla^{\top}_{t}({\pmb \theta}_{t}-{\pmb \theta^{*}})\le 
 \end{align}
 
 \end{proof}
