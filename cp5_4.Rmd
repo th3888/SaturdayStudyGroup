@@ -475,4 +475,10 @@ Thus, we have
 2\{f_{t}({\pmb \theta}_{t}-{\pmb \theta}^{*})\}\le 2\nabla^{\top}({\pmb \theta}_{t}-{\pmb \theta}^{*})-\alpha\|{\pmb \theta}^{*}-{\pmb \theta}_{t}\|^{2}.
 \end{align}
 
+Using the update rule for $\pmb \theta_{t+1}$ and lemma, we get
+
+\begin{align}
+\|{\pmb \theta}_{t+1}-{\pmb \theta^{*}}\|^{2}&=\|\pi({\pmb \theta}_{t}-\eta_{t+1}\nabla_{t})-{\pmb \theta}^{*}\|^{2}\nonumber\\
+&\le \|{\pmb \theta}_{t}-\eta_{t+1}\nabla_{t}-{\pmb \theta}^{*}\|^{2}.\nonumber
+\end{align}
 \end{proof}
