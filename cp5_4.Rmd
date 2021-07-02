@@ -459,7 +459,20 @@ By using the Taylor series approximation, we have, for some point $\xi_{t}$ on t
 
 \begin{align}
 f_{t}({\pmb \theta}^{*})&=f_{t}({\pmb \theta}_{t})+\nabla^{\top}_{t}({\pmb \theta}^{*}-{\pmb \theta}_{t})+\frac{1}{2}({\pmb \theta}^{*}-{\pmb \theta}_{t})^{\top}\nabla^{2}f_{t}(\xi_{t})({\pmb \theta}^{*}-{\pmb \theta}_{t})\nonumber\\
-&\ge f_{t}({\pmb \theta}_{t})+\nabla^{\top}_{t}({\pmb \theta}^{*}-{\pmb \theta}_{t})+\frac{H}{2}\|{\pmb \theta}^{*}-{\pmb \theta}_{t}\|^{2}.\nonumber
+&\ge f_{t}({\pmb \theta}_{t})+\nabla^{\top}_{t}({\pmb \theta}^{*}-{\pmb \theta}_{t})+\frac{\alpha}{2}\|{\pmb \theta}^{*}-{\pmb \theta}_{t}\|^{2}.\nonumber
+\end{align}
+
+\end{proof}
+
+## Regret with strong convex loss function
+
+\begin{proof}
+
+The inequality follows from $\alpha$-strong convexity.
+Thus, we have
+
+\begin{align}
+2\{f_{t}({\pmb \theta}_{t}-{\pmb \theta}^{*})\}\le 
 \end{align}
 
 \end{proof}
