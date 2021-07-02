@@ -503,7 +503,9 @@ Hence,
 Sum up $(6)$ from $t=1$ to $T$ and using $(5)$, we have:
 
 \begin{align}
-2\sum^{T}_{t=1}f_{t}({\pmb \theta}_{t})-f_{t}({\pmb \theta}^{*})\le \sum^{T}_{t=1}\|{\pmb \theta}_{t}-{\pmb \theta^{*}}\|^{2}
+2\sum^{T}_{t=1}f_{t}({\pmb \theta}_{t})-f_{t}({\pmb \theta}^{*})&\le \sum^{T}_{t=1}\|{\pmb \theta}_{t}-{\pmb \theta^{*}}\|^{2}\left(\frac{1}{\eta_{t-1}}+\frac{1}{\eta_{t}}-\alpha\right)+G^{2}\sum_{t=1}^{T}\eta_{t}\nonumber\\
+&=G^{2}\sum^{T}_{t=1}\frac{1}{\alpha t}\nonumber\\
+&\le \frac{G^{2}}{\alpha}(1+\log{T}).\nonumber
 \end{align}
 
 \end{proof}
