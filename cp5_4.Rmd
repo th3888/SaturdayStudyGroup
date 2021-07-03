@@ -537,3 +537,8 @@ where $S_{p}^{T}\subseteq W_{p}^{T}=(\{1,..,P\}\backslash \{p\})×\{T-s,...,T+s-
 
 1. Guaranteed "pre-window" updates from iteration $1$ to $T-s-1$, over the all processes. 
 
+2. Guaranteed "read-my-writes" set $\{(p, T-s),...,(p,T-1)\}$ that covers all "in-window" updates made by the querying process $p$.
+
+3. Guaranteed "in-window" updates $S_{p}^{T}$ from the width-$2s$ window $\{T-s,...,T+s-1\}$ (not counting updates from process $p$).
+
+- Under $s=0$, SSP reduces BSP.
