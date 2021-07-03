@@ -515,4 +515,13 @@ Sum up $(6)$ from $t=1$ to $T$ and using $(5)$, we have:
 
 cf. Ho et al. (2013)
 
-- Let $\pmb w_{1}$ be a initial value of a parameter voctor, $\pmb u_{p}^{t}$ be a difference vector of process $p\in\{1,...,P\}$ in the $t$th update and 
+- Let $\pmb w_{1}$ be a initial value of a parameter voctor, $\pmb u_{p}^{t}$ be a difference vector of process $p\in\{1,...,P\}$ in the $t$th update and $\tilde{\pmb w}_{p}^{T}$ be a noisy state read by process $p$ at iteration $T$.
+
+\begin{df}
+Fix a staleness $s$. 
+Then the noisy state $\tilde{\pmb w}_{p}^{T}$ is equals to
+
+\begin{align}
+\tilde{\pmb w}_{p}^{T}=\pmb w_{1}+
+\end{align}
+\end{df}
