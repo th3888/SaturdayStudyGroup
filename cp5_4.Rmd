@@ -522,6 +522,14 @@ Fix a staleness $s$.
 Then the noisy state $\tilde{\pmb w}_{p}^{T}$ is equals to
 
 \begin{align}
-\tilde{\pmb w}_{p}^{T}=\pmb w_{1}+\sum_{t=1}^{T-s-1}\sum_{q=1}^{P}{\pmb u}_{q}^{t}+
+\tilde{\pmb w}_{p}^{T}=\pmb w_{1}+\sum_{t=1}^{T-s-1}\sum_{q=1}^{P}{\pmb u}_{q}^{t}+\sum_{t=T-s}^{T-1}{\pmb u}_{p}^{t}+\sum_{(q,t)\in S_{p}^{T}}{\pmb u}_{q}^{t},
 \end{align}
+
 \end{df}
+
+## Regret for SSP
+
+where $S_{p}^{T}\subseteq W_{p}^{T}=(\{1,..,P\}\backslash \{p\})×\{T-s,...,T+s-1\}$ is some subset of the updates $\pmb u$ written in the width-$2s$ "window" $W_{p}^{T}$, which ranges from iteration $T-s$ to $T+s-1$ and does not include updates from process $p$.
+
+
+
