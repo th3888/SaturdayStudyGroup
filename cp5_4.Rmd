@@ -517,11 +517,11 @@ cf. Ho et al. (2013)
 
 - Let $\pmb w_{1}$ be a initial value of a parameter voctor, $\pmb u_{p}^{t}$ be a difference vector of process $p\in\{1,...,P\}$ in the $t$th update and $\tilde{\pmb w}_{p}^{T}$ be a noisy state read by process $p$ at iteration $T$.
 
-\begin{df}
+\begin{df}[bounded staleness condition]
 Fix a staleness $s$. 
 Then the noisy state $\tilde{\pmb w}_{p}^{T}$ is equals to
 
 \begin{align}
-\tilde{\pmb w}_{p}^{T}=\pmb w_{1}+
+\tilde{\pmb w}_{p}^{T}=\pmb w_{1}+\sum_{t=1}^{T-s-1}\sum_{q=1}^{P}{\pmb u}_{q}^{t}+
 \end{align}
 \end{df}
