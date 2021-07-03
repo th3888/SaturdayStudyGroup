@@ -302,6 +302,7 @@ Regret(A)\le min_{\eta}\left[2\eta\lambda T + \frac{1}{\eta}\{R({\pmb u})-R({\pm
 \end{proof}
 
 ## Regret with strong convex loss function
+cf. Hazan, Agarwal and Kale (2007) 
 
 - a player chooses a point (action) from a set in Euclidean space denoted $K\subseteq \mathbb R^{n}$.
 
@@ -509,3 +510,4 @@ Sum up $(6)$ from $t=1$ to $T$ and using $(5)$, we have:
 \end{align}
 
 \end{proof}
+
