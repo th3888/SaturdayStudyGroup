@@ -472,7 +472,7 @@ The inequality follows from $\alpha$-strong convexity.
 Thus, we have
 
 \begin{align}
-2\{f_{t}({\pmb \theta}_{t}-{\pmb \theta}^{*})\}\le 2\nabla^{\top}({\pmb \theta}_{t}-{\pmb \theta}^{*})-\alpha\|{\pmb \theta}^{*}-{\pmb \theta}_{t}\|^{2}.
+2\{f_{t}({\pmb \theta}_{t})-f_{t}({\pmb \theta}^{*})\}\le 2\nabla^{\top}({\pmb \theta}_{t}-{\pmb \theta}^{*})-\alpha\|{\pmb \theta}^{*}-{\pmb \theta}_{t}\|^{2}.
 \end{align}
 
 Using the update rule for $\pmb \theta_{t+1}$ and lemma, we get
