@@ -511,3 +511,6 @@ Sum up $(6)$ from $t=1$ to $T$ and using $(5)$, we have:
 
 \end{proof}
 
+## Regret for SSP
+
+cf. Ho et al. (2013)
