@@ -532,4 +532,8 @@ Then the noisy state $\tilde{\pmb w}_{p}^{T}$ is equals to
 where $S_{p}^{T}\subseteq W_{p}^{T}=(\{1,..,P\}\backslash \{p\})×\{T-s,...,T+s-1\}$ is some subset of the updates $\pmb u$ written in the width-$2s$ "window" $W_{p}^{T}$, which ranges from iteration $T-s$ to $T+s-1$ and does not include updates from process $p$.
 
 
+## Regret for SSP
+- In other words, the noisy state $\tilde{\pmb w}_{p}^{T}$ consists of three parts:
+
+1. Guaranteed "pre-window" updates from iteration $1$ to $T-s-1$, over the all processes. 
 
