@@ -416,7 +416,7 @@ It is a well known fact in optimization that for the optimum $\pmb z$ the follow
 which implies
 
 \begin{align}
-2({\pmb z}-{\pmb y})^{\top}{\pmb A}({\pmb a}-{\pmb z})\ge 0\Rightarrow 2{\pmb a}^{\top}{\pmb A}({\pmb z}^{\pmb y})\ge 2{\pmb z}^{\top}{\pmb A}({\pmb z}^{\pmb y}).\nonumber
+2({\pmb z}-{\pmb y})^{\top}{\pmb A}({\pmb a}-{\pmb z})\ge 0\Rightarrow 2{\pmb a}^{\top}{\pmb A}({\pmb z}-{\pmb y})\ge 2{\pmb z}^{\top}{\pmb A}({\pmb z}-{\pmb y}).\nonumber
 \end{align}
 \end{proof}
 
