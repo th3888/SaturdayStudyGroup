@@ -549,3 +549,7 @@ where $S_{p}^{T}\subseteq W_{p}^{T}=(\{1,..,P\}\backslash \{p\})×\{T-s,...,T+s-
 \begin{proof}
 $s=0$ implies $[T, T-s-1]=\emptyset$, and therefore $\tilde{\pmb w}_{p}^{T}$ exactly consists of all updates until clock $T-1$.
 \end{proof}
+
+## Regret for SSP
+
+- Our key tool for regret analysis is to define a reference sequence of state ${\pmb w}_{t}$, 
