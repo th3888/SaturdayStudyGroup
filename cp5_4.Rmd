@@ -541,4 +541,11 @@ where $S_{p}^{T}\subseteq W_{p}^{T}=(\{1,..,P\}\backslash \{p\})×\{T-s,...,T+s-
 
 3. Guaranteed "in-window" updates $S_{p}^{T}$ from the width-$2s$ window $\{T-s,...,T+s-1\}$ (not counting updates from process $p$).
 
+
+## Regret for SSP
+
 - Under $s=0$, SSP reduces BSP.
+
+\begin{proof}
+$s=0$ implies $[T, T-s-1]=\emptyset$, and therefore $\tilde{\pmb w}_{p}^{T}$ exactly consists of all updates until clock $T-1$.
+\end{proof}
