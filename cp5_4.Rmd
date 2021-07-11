@@ -552,4 +552,8 @@ $s=0$ implies $[T, T-s-1]=\emptyset$, and therefore $\tilde{\pmb w}_{p}^{T}$ exa
 
 ## Regret for SSP
 
-- Our key tool for regret analysis is to define a reference sequence of state ${\pmb w}_{t}$, 
+- Our key tool for regret analysis is to define a reference sequence of state ${\pmb w}_{t}$, informally refered to as the "true" sequence:
+
+\begin{align}
+{\pmb w}_{T}={\pmb w}^{1}
+\end{align}
